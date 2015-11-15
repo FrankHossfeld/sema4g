@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sema4g:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="sema4g-1.0.war">
+      <element id="artifact" artifact-name="sema4g:war exploded" />
+    </root>
+  </artifact>
+</component>
