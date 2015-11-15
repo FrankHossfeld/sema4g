@@ -17,7 +17,7 @@ package org.gwt4e.sema4g.client.context.commands;
 
 /**
  * <p>This command allows to execute statements in case
- * a execution context is started.</p>
+ * a {@link org.gwt4e.sema4g.client.context.ExecutionContext} is started.</p>
  */
 public interface InitCommand {
 

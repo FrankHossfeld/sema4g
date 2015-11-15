@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ *<p>AbstractCommand provides base functionality to run a SeMa4g command.</p>
  */
 public abstract class AbstractCommand
   implements SeMa4gCommand {

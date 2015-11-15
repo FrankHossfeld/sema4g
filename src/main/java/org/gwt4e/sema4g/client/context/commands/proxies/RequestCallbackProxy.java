@@ -21,6 +21,12 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
 import org.gwt4e.sema4g.client.context.commands.AsyncCommand;
 
+/**
+ * <p>Add support for RequestCallback in GWT {@link RequestCallback}</p>
+ * <br /><br />
+ * <p>If you are using SeMa4g, you have to this RequestCallbackProxy
+ * class instead of the RequestCallback. Otherwise SeMa4g will not work.</p>
+ */
 public class RequestCallbackProxy
   implements SeMa4gProxy,
              RequestCallback {

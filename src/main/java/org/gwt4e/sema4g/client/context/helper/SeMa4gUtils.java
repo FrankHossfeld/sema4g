@@ -18,9 +18,6 @@ package org.gwt4e.sema4g.client.context.helper;
 
 /**
  * <p>This class provides a unique version number.</p>
- *
- * @author Frank Hossfeld
- * @version 1.0.0
  */
 public class SeMa4gUtils {
   /* last created id */

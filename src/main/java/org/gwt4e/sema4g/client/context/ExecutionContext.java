@@ -28,13 +28,8 @@ import java.util.List;
 
 
 /**
- * <p>headline</p>
- * <br /><br />
- * <p>description</p>
- * <br /><br />
- *
- * @author Frank Hossfeld
- * @version 1.0.0
+ * <p>The execution context manages all commands.<br>Use the run()-method
+ * to start execution</p>
  */
 public class ExecutionContext {
 
@@ -82,6 +77,11 @@ public class ExecutionContext {
 
 //------------------------------------------------------------------------------
 
+  /**
+   * <p>Adds a {@link InitCommand} to the ExecutionContext.</p>
+   * @param initCommand InitCommand
+   * @return the ExecutionContext
+   */
   public ExecutionContext addInit(InitCommand initCommand) {
     // add initial command
     this.initialCommands.add(initCommand);
@@ -89,6 +89,11 @@ public class ExecutionContext {
     return this;
   }
 
+  /**
+   * <p>Adds a {@link FinalCommand} to the ExecutionContext.</p>
+   * @param finalCommand FinalCommand
+   * @return the ExecutionContext
+   */
   public ExecutionContext addFinal(FinalCommand finalCommand) {
     // add inital command
     this.finalCommands.add(finalCommand);

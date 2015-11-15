@@ -35,7 +35,7 @@ package org.gwt4e.sema4g.client.context.commands;
 import org.gwt4e.sema4g.client.context.commands.helper.AbstractCommand;
 
 /**
- *
+ * <p>A synchronous command to use with SeMa4g.</p>
  */
 public abstract class SyncCommand
   extends AbstractCommand {

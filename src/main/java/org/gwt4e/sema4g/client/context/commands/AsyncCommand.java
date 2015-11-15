@@ -36,7 +36,7 @@ import org.gwt4e.sema4g.client.context.commands.helper.AbstractCommand;
 import org.gwt4e.sema4g.client.context.commands.helper.SeMa4gCommand;
 
 /**
- *
+ * <p>A asynchronous command to use with SeMa4g.</p>
  */
 public abstract class AsyncCommand
   extends AbstractCommand {

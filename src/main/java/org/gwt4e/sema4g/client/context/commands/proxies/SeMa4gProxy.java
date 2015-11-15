@@ -33,5 +33,8 @@
 package org.gwt4e.sema4g.client.context.commands.proxies;
 
 
+/**
+ * <p>Marks as Proxy as a SeMa4g-Proxy</p>
+ */
 public interface SeMa4gProxy {
 }

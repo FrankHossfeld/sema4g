@@ -20,19 +20,11 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.gwt4e.sema4g.client.context.commands.AsyncCommand;
 
 /**
- * <p>headline</p>
+ * <p>Add support for AsyncCallback in GWT {@link AsyncCallback}</p>
  * <br /><br />
- * <p>description</p>
- * <br /><br />
- * User: hoss
- * Date: 14.02.14
- * Time: 10:12
- *
- * @author Frank Hossfeld
- * @version 1.0.0
+ * <p>If you are using SeMa4g, you have to this AsyncCallbackProxy
+ * class instead of the AsyncCallback. Otherwise SeMa4g will not work.</p>
  */
-
-
 public class AsyncCallbackProxy<C extends AsyncCallback<T>, T>
   implements SeMa4gProxy,
              AsyncCallback<T> {

@@ -24,9 +24,6 @@ import java.util.List;
 /**
  * This interface provide all needed methods to interact with the
  * {@link ExecutionContext}
- *
- * @author Frank Hossfeld
- * @version 1.0.0
  */
 public interface SeMa4gCommand {
 
