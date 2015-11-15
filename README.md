@@ -15,6 +15,12 @@ You get:
 
 To start, download the latest release and add the sema4g-x.x.x.jar to your classpath.
 
+Next inherit the SEMA4G module in your module descriptor by adding:
+```
+  <inherits name="org.gwt4e.sema4g.SeMa4g"/>
+```
+
+ 
 
 
 
