@@ -8,6 +8,13 @@ result of another one. Solving this dependencies can be quite difficult.
 SEMA4G helps you to manage asynchronous server calls.
  
 You get:
-- InitComand that will be executed at the beginning
-- 
+- InitCommand that will be executed at the beginning
+- FinalCommand that will be executed after all commands have completed
+- AsyncCommand to do aasynchronous call
+- SyncCommand to do synchronous call 
+
+To start, download the latest release and add the sema4g-x.x.x.jar to your classpath.
+
+
+
 
