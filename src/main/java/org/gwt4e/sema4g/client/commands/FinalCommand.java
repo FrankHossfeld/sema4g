@@ -13,17 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwt4e.sema4g.client.context.commands;
+package org.gwt4e.sema4g.client.commands;
 
-import org.gwt4e.sema4g.client.context.ExecutionContext;
+import org.gwt4e.sema4g.client.SeMa4g;
 
 /**
  * <p>This command allows to execute statements in case
  * a execution context has finished. Depending on the
  * state of execution one of the methods will be executed.
  * <br><br>
- * If the state of the {@link ExecutionContext}
- * is {@link ExecutionContext.State} 'FINISH',
+ * If the state of the {@link SeMa4g}
+ * is {@link SeMa4g.State} 'FINISH',
  * the onSuccess-method will be executed. In all other cases, the 'onFailre-method
  * is executed.
  * </p>

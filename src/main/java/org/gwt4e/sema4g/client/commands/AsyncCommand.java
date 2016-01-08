@@ -30,11 +30,32 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.context.commands.proxies;
+package org.gwt4e.sema4g.client.commands;
 
+import org.gwt4e.sema4g.client.commands.helper.AbstractCommand;
+import org.gwt4e.sema4g.client.commands.helper.SeMa4gCommand;
 
 /**
- * <p>Marks as Proxy as a SeMa4g-Proxy</p>
+ * <p>A asynchronous command to use with SeMa4g.</p>
  */
-public interface SeMa4gProxy {
+public abstract class AsyncCommand
+  extends AbstractCommand {
+
+  public AsyncCommand() {
+    super();
+  }
+
+  public void onSuccess() {
+    // update state
+    super.setState(State.FINISH);
+    // trigger execution context
+    super.getExecutionContext()
+         .trigger();
+  }
+
+  @SuppressWarnings("unused")
+  public void onFailure(Throwable caught) {
+    // update state
+    super.setState(SeMa4gCommand.State.ERROR);
+  }
 }

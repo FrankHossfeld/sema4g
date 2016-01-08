@@ -14,16 +14,16 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.context.commands.helper;
+package org.gwt4e.sema4g.client.commands.helper;
 
-import org.gwt4e.sema4g.client.context.ExecutionContext;
-import org.gwt4e.sema4g.client.context.exceptions.SeMa4gException;
+import org.gwt4e.sema4g.client.SeMa4g;
+import org.gwt4e.sema4g.client.exceptions.SeMa4gException;
 
 import java.util.List;
 
 /**
  * This interface provide all needed methods to interact with the
- * {@link ExecutionContext}
+ * {@link SeMa4g}
  */
 public interface SeMa4gCommand {
 
@@ -57,18 +57,18 @@ public interface SeMa4gCommand {
   List<SeMa4gCommand> getDependencies();
 
   /**
-   * Returns the {@link ExecutionContext} for this command.
+   * Returns the {@link SeMa4g} for this command.
    *
-   * @return The {@link ExecutionContext} for this command
+   * @return The {@link SeMa4g} for this command
    */
-  ExecutionContext getExecutionContext();
+  SeMa4g getExecutionContext();
 
   /**
-   * Sets the {@link ExecutionContext} for this command.
+   * Sets the {@link SeMa4g} for this command.
    *
-   * @param executionContext the {@link ExecutionContext} for this command
+   * @param executionContext the {@link SeMa4g} for this command
    */
-  void setExecutionContext(ExecutionContext executionContext);
+  void setExecutionContext(SeMa4g executionContext);
 
   /**
    * Returns the current {@link SeMa4gCommand.State}

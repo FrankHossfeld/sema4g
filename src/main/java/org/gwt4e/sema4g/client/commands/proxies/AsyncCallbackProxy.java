@@ -14,10 +14,10 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.context.commands.proxies;
+package org.gwt4e.sema4g.client.commands.proxies;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import org.gwt4e.sema4g.client.context.commands.AsyncCommand;
+import org.gwt4e.sema4g.client.commands.AsyncCommand;
 
 /**
  * <p>Add support for AsyncCallback in GWT {@link AsyncCallback}</p>

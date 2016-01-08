@@ -30,32 +30,27 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.context.commands;
+package org.gwt4e.sema4g.client.commands;
 
-import org.gwt4e.sema4g.client.context.commands.helper.AbstractCommand;
-import org.gwt4e.sema4g.client.context.commands.helper.SeMa4gCommand;
+import org.gwt4e.sema4g.client.commands.helper.AbstractCommand;
 
 /**
- * <p>A asynchronous command to use with SeMa4g.</p>
+ * <p>A synchronous command to use with SeMa4g.</p>
  */
-public abstract class AsyncCommand
+public abstract class SyncCommand
   extends AbstractCommand {
 
-  public AsyncCommand() {
+  protected SyncCommand() {
     super();
   }
 
-  public void onSuccess() {
+  /**
+   * This method is used by the execution context to start the command
+   */
+  public void run() {
+    // calll super run-method
+    super.run();
     // update state
     super.setState(State.FINISH);
-    // trigger execution context
-    super.getExecutionContext()
-         .trigger();
-  }
-
-  @SuppressWarnings("unused")
-  public void onFailure(Throwable caught) {
-    // update state
-    super.setState(SeMa4gCommand.State.ERROR);
   }
 }

@@ -14,12 +14,12 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.context.commands.proxies;
+package org.gwt4e.sema4g.client.commands.proxies;
 
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
-import org.gwt4e.sema4g.client.context.commands.AsyncCommand;
+import org.gwt4e.sema4g.client.commands.AsyncCommand;
 
 /**
  * <p>Add support for RequestCallback in GWT {@link RequestCallback}</p>

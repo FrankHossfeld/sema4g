@@ -30,27 +30,11 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.context.commands;
+package org.gwt4e.sema4g.client.commands.proxies;
 
-import org.gwt4e.sema4g.client.context.commands.helper.AbstractCommand;
 
 /**
- * <p>A synchronous command to use with SeMa4g.</p>
+ * <p>Marks as Proxy as a SeMa4g-Proxy</p>
  */
-public abstract class SyncCommand
-  extends AbstractCommand {
-
-  protected SyncCommand() {
-    super();
-  }
-
-  /**
-   * This method is used by the execution context to start the command
-   */
-  public void run() {
-    // calll super run-method
-    super.run();
-    // update state
-    super.setState(State.FINISH);
-  }
+public interface SeMa4gProxy {
 }

@@ -13,18 +13,20 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwt4e.sema4g.client.context.commands;
+
+package org.gwt4e.sema4g.client.exceptions;
 
 /**
- * <p>This command allows to execute statements in case
- * a {@link org.gwt4e.sema4g.client.context.ExecutionContext} is started.</p>
+ * <p>This exception is thrown if something works not as expected</p>
  */
-public interface InitCommand {
+public class SeMa4gException
+  extends Exception {
 
-  /**
-   * <p>This method will be called in case
-   * the related execution context is started</p>
-   */
-  void onStart();
+  @SuppressWarnings("unused")
+  private SeMa4gException() {
+  }
 
+  public SeMa4gException(String message) {
+    super(message);
+  }
 }

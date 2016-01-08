@@ -14,11 +14,11 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.context.commands.helper;
+package org.gwt4e.sema4g.client.commands.helper;
 
-import org.gwt4e.sema4g.client.context.ExecutionContext;
-import org.gwt4e.sema4g.client.context.exceptions.SeMa4gException;
-import org.gwt4e.sema4g.client.context.helper.SeMa4gUtils;
+import org.gwt4e.sema4g.client.SeMa4g;
+import org.gwt4e.sema4g.client.exceptions.SeMa4gException;
+import org.gwt4e.sema4g.client.SeMa4gUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public abstract class AbstractCommand
   /* State of the server call */
   private       State               state;
   /* execution context of this action */
-  private       ExecutionContext    executionContext;
+  private       SeMa4g              executionContext;
   /* dependencies */
   private       List<SeMa4gCommand> dependencies;
 
@@ -66,11 +66,11 @@ public abstract class AbstractCommand
   }
 
   /**
-   * Returns the {@link ExecutionContext} for this command.
+   * Returns the {@link SeMa4g} for this command.
    *
-   * @return The {@link ExecutionContext} for this command
+   * @return The {@link SeMa4g} for this command
    */
-  public ExecutionContext getExecutionContext() {
+  public SeMa4g getExecutionContext() {
     return this.executionContext;
   }
 
@@ -84,11 +84,11 @@ public abstract class AbstractCommand
   }
 
   /**
-   * Sets the {@link ExecutionContext} for this command.
+   * Sets the {@link SeMa4g} for this command.
    *
-   * @param executionContext the {@link ExecutionContext} for this command
+   * @param executionContext the {@link SeMa4g} for this command
    */
-  public void setExecutionContext(ExecutionContext executionContext) {
+  public void setExecutionContext(SeMa4g executionContext) {
     if (executionContext != null) {
       this.executionContext = executionContext;
     }

@@ -8,7 +8,7 @@
   <groupId>org.gwt4e.sema4g</groupId>
   <artifactId>sema4g</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <name>SeMa4g</name>
   <description>Managing asynchronous calls in GWT</description>
   <url>https://github.com/FrankHossfeld/sema4g</url>

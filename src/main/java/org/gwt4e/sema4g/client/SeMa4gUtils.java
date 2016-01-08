@@ -14,7 +14,7 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.context.helper;
+package org.gwt4e.sema4g.client;
 
 /**
  * <p>This class provides a unique version number.</p>
