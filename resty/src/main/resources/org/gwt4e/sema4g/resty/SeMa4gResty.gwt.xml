@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='SeMa4gResty'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User' />
+
+  <!-- Other module inherits                                      -->
+  <inherits name="org.fusesource.restygwt.RestyGWT"/>
+  <inherits name="org.gwt4e.sema4g.SeMa4g"/>
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client' />
+</module>

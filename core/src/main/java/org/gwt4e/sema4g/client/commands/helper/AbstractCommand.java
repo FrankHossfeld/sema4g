@@ -16,12 +16,12 @@
 
 package org.gwt4e.sema4g.client.commands.helper;
 
-import org.gwt4e.sema4g.client.SeMa4g;
-import org.gwt4e.sema4g.client.exceptions.SeMa4gException;
-import org.gwt4e.sema4g.client.SeMa4gUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.gwt4e.sema4g.client.SeMa4g;
+import org.gwt4e.sema4g.client.SeMa4gUtils;
+import org.gwt4e.sema4g.client.exceptions.SeMa4gException;
 
 /**
  *<p>AbstractCommand provides base functionality to run a SeMa4g command.</p>
