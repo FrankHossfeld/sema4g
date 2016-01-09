@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.gwt4e.sema4g</groupId>
+  <artifactId>sema4g-parent</artifactId>
+  <version>1.2.0</version>
+  <packaging>pom</packaging>
+  <name>sema4g (parent)</name>
+  <description>Managing asynchronous calls in GWT</description>
+  <url>https://github.com/FrankHossfeld/sema4g</url>
+
+  <developers>
+    <developer>
+      <name>Frank Hossfeld</name>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:https://github.com/FrankHossfeld/sema4g</connection>
+    <developerConnection>scm:git:https://github.com/FrankHossfeld/sema4g</developerConnection>
+    <url>scm:git:https://github.com/FrankHossfeld/sema4g</url>
+  </scm>
+
+  <modules>
+    <module>core</module>
+    <module>resty</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Convenience property to set the GWT version -->
+    <gwtVersion>2.7.0</gwtVersion>
+
+    <!-- GWT needs at least java 1.6 -->
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt</artifactId>
+        <version>${gwtVersion}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!--<plugin>-->
+        <!--<artifactId>maven-invoker-plugin</artifactId>-->
+        <!--<version>1.7</version>-->
+        <!--</plugin>-->
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.3.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <compilerArgument>-Xlint:all</compilerArgument>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+        </configuration>
+      </plugin>
+
+      <!--<plugin>-->
+        <!--<artifactId>maven-release-plugin</artifactId>-->
+        <!--<configuration>-->
+          <!--<autoVersionSubmodules>true</autoVersionSubmodules>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+
+      <!--<plugin>-->
+        <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+        <!--<configuration>-->
+          <!--<doctitle>SeMa4g Dependency Injection ${project.version} API</doctitle>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-gpg-plugin</artifactId>-->
+        <!--<configuration>-->
+          <!--<useAgent>true</useAgent>-->
+        <!--</configuration>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>sign-artifacts</id>-->
+            <!--<phase>verify</phase>-->
+            <!--<goals>-->
+              <!--<goal>sign</goal>-->
+            <!--</goals>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
+    </plugins>
+  </build>
+</project>

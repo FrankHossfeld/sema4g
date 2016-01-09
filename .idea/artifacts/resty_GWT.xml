@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact name="resty:GWT">
+    <output-path>$PROJECT_DIR$/out/artifacts/resty_GWT</output-path>
+    <root id="root">
+      <element id="gwt-compiler-output" facet="resty/gwt/GWT" />
+    </root>
+  </artifact>
+</component>

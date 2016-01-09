@@ -71,14 +71,14 @@ public interface SeMa4gCommand {
   void setExecutionContext(SeMa4g executionContext);
 
   /**
-   * Returns the current {@link SeMa4gCommand.State}
+   * Returns the current {@link State}
    *
    * @return current state of the command
    */
   State getState();
 
   /**
-   * Sets the {@link SeMa4gCommand.State}
+   * Sets the {@link State}
    * of the command
    *
    * @param state the new state
