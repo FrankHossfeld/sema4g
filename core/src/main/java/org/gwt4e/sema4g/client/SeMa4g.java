@@ -45,19 +45,26 @@ public class SeMa4g {
   private SeMa4g(Builder builder) {
     this.state = State.WAITING;
 
-    this.initialCommands = builder.initialCommands;
-    this.finalCommands = builder.finalCommands;
-    this.seMa4gCommands = builder.seMa4gCommands;
+    initialCommands = new ArrayList<>();
+    initialCommands.addAll(builder.initialCommands);
 
+    finalCommands = new ArrayList<>();
+    finalCommands.addAll(builder.finalCommands);
+
+    seMa4gCommands = new ArrayList<>();
+    seMa4gCommands.addAll(builder.seMa4gCommands);
     // set execution context reference
     for (int i = 0; i < seMa4gCommands.size(); i++) {
       seMa4gCommands.get(i).setExecutionContext(this);
-
     }
   }
 
   public static final Builder builder() {
-    return new Builder();
+    Builder builder = new Builder();
+    builder.initialCommands = new ArrayList<>();
+    builder.finalCommands = new ArrayList<>();
+    builder.seMa4gCommands = new ArrayList<>();
+    return builder;
   }
 
   public static final class Builder {
