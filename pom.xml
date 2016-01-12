@@ -6,7 +6,7 @@
 
   <groupId>org.gwt4e.sema4g</groupId>
   <artifactId>sema4g-parent</artifactId>
-  <version>1.2.1</version>
+  <version>1.2.3</version>
   <packaging>pom</packaging>
   <name>sema4g (parent)</name>
   <description>Managing asynchronous calls in GWT</description>

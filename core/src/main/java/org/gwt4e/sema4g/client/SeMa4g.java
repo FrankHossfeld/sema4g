@@ -60,17 +60,13 @@ public class SeMa4g {
   }
 
   public static final Builder builder() {
-    Builder builder = new Builder();
-    builder.initialCommands = new ArrayList<>();
-    builder.finalCommands = new ArrayList<>();
-    builder.seMa4gCommands = new ArrayList<>();
-    return builder;
+    return new Builder();
   }
 
   public static final class Builder {
-    static List<InitCommand>   initialCommands = new ArrayList<>();
-    static List<FinalCommand>  finalCommands   = new ArrayList<>();
-    static List<SeMa4gCommand> seMa4gCommands  = new ArrayList<>();
+    List<InitCommand>   initialCommands = new ArrayList<>();
+    List<FinalCommand>  finalCommands   = new ArrayList<>();
+    List<SeMa4gCommand> seMa4gCommands  = new ArrayList<>();
 
     /**
      * Adds the command to the list of commands, which will be executed, when the context runs. <br></br> if the command is already added to the list of commands, the command will be ignored.
