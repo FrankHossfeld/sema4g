@@ -16,10 +16,11 @@
 
 package org.gwt4e.sema4g.client.commands.proxies;
 
+import org.gwt4e.sema4g.client.commands.AsyncCommand;
+
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
-import org.gwt4e.sema4g.client.commands.AsyncCommand;
 
 /**
  * <p>Add support for RequestCallback in GWT {@link RequestCallback}</p>
@@ -27,42 +28,45 @@ import org.gwt4e.sema4g.client.commands.AsyncCommand;
  * <p>If you are using SeMa4g, you have to this RequestCallbackProxy
  * class instead of the RequestCallback. Otherwise SeMa4g will not work.</p>
  */
-public class RequestCallbackProxy
+public abstract class RequestCallbackProxy
   implements SeMa4gProxy,
              RequestCallback {
 
-  private final RequestCallback asyncCallback;
   /* execution command of this proxy */
   private       AsyncCommand    command;
 
-//------------------------------------------------------------------------------
-
-  public RequestCallbackProxy(AsyncCommand command,
-                              RequestCallback asyncCallback) {
+  public RequestCallbackProxy(AsyncCommand command) {
     super();
     this.command = command;
-    this.asyncCallback = asyncCallback;
   }
-
-//------------------------------------------------------------------------------
 
   @Override
   public void onResponseReceived(Request request,
                                  Response response) {
+    // Set State
+    command.setStateFinish();
     // do the default handling
-    asyncCallback.onResponseReceived(request,
+    onProxyResponseReceived(request,
                                      response);
     // do the SeMa4g handling
-    command.onSuccess();
+    command.trigger();
   }
 
   @Override
   public void onError(Request request,
                       Throwable exception) {
+    // Set State
+    command.setStateError();
     // do the default handling
-    asyncCallback.onError(request,
+    onProxyError(request,
                           exception);
     // do the SeMa4g handling
-    command.onFailure(exception);
+    command.failure(exception);
   }
+
+  protected abstract void onProxyError(Request request,
+                                       Throwable exception);
+
+  protected abstract void onProxyResponseReceived(Request request,
+                                                  Response response);
 }

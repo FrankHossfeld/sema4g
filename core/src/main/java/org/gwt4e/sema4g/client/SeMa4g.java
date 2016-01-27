@@ -21,8 +21,8 @@ import java.util.List;
 
 import org.gwt4e.sema4g.client.commands.FinalCommand;
 import org.gwt4e.sema4g.client.commands.InitCommand;
+import org.gwt4e.sema4g.client.commands.SeMa4gCommand;
 import org.gwt4e.sema4g.client.commands.SyncCommand;
-import org.gwt4e.sema4g.client.commands.helper.SeMa4gCommand;
 import org.gwt4e.sema4g.client.exceptions.SeMa4gException;
 
 import com.google.gwt.core.client.GWT;
@@ -167,9 +167,10 @@ public class SeMa4g {
   }
 
   /**
-   * <p>This method will set the state to 'CANCELED' for all commands, that have not already started (state is 'WAITING').</p>
+   * This command can be called to interrupt the execution and
+   * start the error behavior.
    */
-  public void cancel() {
+  public void signalError() {
     // set state
     this.state = State.ERROR;
     // cancel all not already started commands
@@ -264,15 +265,18 @@ public class SeMa4g {
   }
 
   private void updateState() {
+    if (SeMa4gCommand.State.ERROR.equals(this.state)) {
+      return;
+    }
+
     for (SeMa4gCommand seMa4gCommand : this.seMa4gCommands) {
-      if (seMa4gCommand.getState()
+      if (seMa4gCommand.getState().equals(SeMa4gCommand.State.ERROR)) {
+        this.state = State.ERROR;
+        return;
+      } else if (seMa4gCommand.getState()
                        .equals(SeMa4gCommand.State.WAITING) || seMa4gCommand.getState()
                                                                             .equals(SeMa4gCommand.State.RUNNING)) {
         this.state = State.RUNNING;
-        return;
-      } else if (seMa4gCommand.getState()
-                              .equals(SeMa4gCommand.State.ERROR)) {
-        this.state = State.ERROR;
         return;
       }
     }

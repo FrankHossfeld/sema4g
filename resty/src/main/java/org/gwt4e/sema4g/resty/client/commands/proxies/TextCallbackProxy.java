@@ -28,42 +28,44 @@ import org.gwt4e.sema4g.client.commands.proxies.SeMa4gProxy;
  * class instead of the TextCallback from the RestyGWT. Otherwise
  * SeMa4g will not work.</p>
  */
-public class TextCallbackProxy
-  implements SeMa4gProxy,
-             TextCallback {
+public abstract class TextCallbackProxy
+  implements SeMa4gProxy, TextCallback {
 
-  private final TextCallback asyncCallback;
   /* execution command of this proxy */
-  private       AsyncCommand command;
+  private AsyncCommand command;
 
-//------------------------------------------------------------------------------
-
-  public TextCallbackProxy(AsyncCommand command,
-                           TextCallback asyncCallback) {
+  public TextCallbackProxy(AsyncCommand command) {
     super();
     this.command = command;
-    this.asyncCallback = asyncCallback;
   }
-
-//------------------------------------------------------------------------------
 
   @Override
   public void onFailure(Method method,
                         Throwable caught) {
+    // Set State
+    command.setStateError();
     // do the default handling
-    asyncCallback.onFailure(method,
-                            caught);
+    onProxyFailure(method,
+                   caught);
     // do the SeMa4g handling
-    command.onFailure(caught);
+    command.failure(caught);
   }
 
   @Override
   public void onSuccess(Method method,
                         String result) {
+    // Set State
+    command.setStateFinish();
     // do the default handling
-    asyncCallback.onSuccess(method,
-                            result);
+    onProxySuccess(method,
+                   result);
     // do the SeMa4g handling
-    command.onSuccess();
+    command.trigger();
   }
+
+  protected abstract void onProxyFailure(Method method,
+                                         Throwable caught);
+
+  protected abstract void onProxySuccess(Method method,
+                                         String result);
 }

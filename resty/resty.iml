@@ -31,7 +31,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.gwt4e.sema4g:sema4g:1.1.0" level="project" />
+    <orderEntry type="module" module-name="core" scope="PROVIDED" />
     <orderEntry type="library" name="Maven: org.fusesource.restygwt:restygwt:2.0.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.gwt:gwt-servlet:2.7.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-user:2.7.0" level="project" />

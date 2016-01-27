@@ -14,12 +14,12 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.commands.helper;
+package org.gwt4e.sema4g.client.commands;
+
+import java.util.List;
 
 import org.gwt4e.sema4g.client.SeMa4g;
 import org.gwt4e.sema4g.client.exceptions.SeMa4gException;
-
-import java.util.List;
 
 /**
  * This interface provide all needed methods to interact with the
@@ -84,6 +84,12 @@ public interface SeMa4gCommand {
    * @param state the new state
    */
   void setState(State state);
+
+  /**
+   * This command can be called to interrupt the execution and
+   * start the error behavior.
+   */
+  void signalError();
 
   /**
    * This method is used by the execution context to start the command

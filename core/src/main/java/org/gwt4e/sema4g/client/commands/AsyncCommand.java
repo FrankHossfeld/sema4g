@@ -32,9 +32,6 @@
 
 package org.gwt4e.sema4g.client.commands;
 
-import org.gwt4e.sema4g.client.commands.helper.AbstractCommand;
-import org.gwt4e.sema4g.client.commands.helper.SeMa4gCommand;
-
 /**
  * <p>A asynchronous command to use with SeMa4g.</p>
  */
@@ -45,17 +42,22 @@ public abstract class AsyncCommand
     super();
   }
 
-  public void onSuccess() {
+  public void setStateError() {
     // update state
-    super.setState(State.FINISH);
-    // trigger execution context
-    super.getExecutionContext()
-         .trigger();
+    setState(State.ERROR);
   }
 
-  @SuppressWarnings("unused")
-  public void onFailure(Throwable caught) {
+  public void setStateFinish() {
     // update state
-    super.setState(SeMa4gCommand.State.ERROR);
+    setState(State.FINISH);
+  }
+
+  public void trigger() {
+    // trigger execution context
+    getExecutionContext().trigger();
+  }
+
+  public void failure(Throwable caught) {
+    signalError();
   }
 }

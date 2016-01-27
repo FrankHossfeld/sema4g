@@ -14,7 +14,7 @@
  * the License.
  */
 
-package org.gwt4e.sema4g.client.commands.helper;
+package org.gwt4e.sema4g.client.commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +38,6 @@ public abstract class AbstractCommand
   /* dependencies */
   private       List<SeMa4gCommand> dependencies;
 
-//------------------------------------------------------------------------------
-
   protected AbstractCommand() {
     // set state
     this.state = State.WAITING;
@@ -48,8 +46,6 @@ public abstract class AbstractCommand
     // get ID
     id = SeMa4gUtils.getNextId();
   }
-
-//------------------------------------------------------------------------------
 
   String getId() {
     return id;
@@ -103,8 +99,6 @@ public abstract class AbstractCommand
   public void setState(State state) {
     this.state = state;
   }
-
-//------------------------------------------------------------------------------
 
   /**
    * Definies the {@link SeMa4gCommand} (one or more) which have to
@@ -178,7 +172,14 @@ public abstract class AbstractCommand
     this.checkCycleDependencies(usedDependencies);
   }
 
-//------------------------------------------------------------------------------
+  /**
+   * This command can be called to interrupt the execution and
+   * start the error behavior.
+   */
+  public void signalError() {
+    this.state = State.ERROR;
+    executionContext.signalError();
+  }
 
   /**
    * Use this method to implement the execution code.

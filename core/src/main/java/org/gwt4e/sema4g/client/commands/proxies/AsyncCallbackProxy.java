@@ -16,8 +16,9 @@
 
 package org.gwt4e.sema4g.client.commands.proxies;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.gwt4e.sema4g.client.commands.AsyncCommand;
+
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * <p>Add support for AsyncCallback in GWT {@link AsyncCallback}</p>
@@ -25,38 +26,40 @@ import org.gwt4e.sema4g.client.commands.AsyncCommand;
  * <p>If you are using SeMa4g, you have to this AsyncCallbackProxy
  * class instead of the AsyncCallback. Otherwise SeMa4g will not work.</p>
  */
-public class AsyncCallbackProxy<C extends AsyncCallback<T>, T>
+public abstract class AsyncCallbackProxy<T>
   implements SeMa4gProxy,
              AsyncCallback<T> {
 
-  private final C            asyncCallback;
   /* execution command of this proxy */
   private       AsyncCommand command;
 
-//------------------------------------------------------------------------------
-
-  public AsyncCallbackProxy(AsyncCommand command,
-                            C asyncCallback) {
+  public AsyncCallbackProxy(AsyncCommand command) {
     super();
     this.command = command;
-    this.asyncCallback = asyncCallback;
   }
-
-//------------------------------------------------------------------------------
 
   @Override
   public void onFailure(Throwable caught) {
+    // Set State
+    command.setStateError();
     // do the default handling
-    asyncCallback.onFailure(caught);
+    onProxyFailure(caught);
     // do the SeMa4g handling
-    command.onFailure(caught);
+    command.failure(caught);
   }
 
   @Override
   public void onSuccess(T result) {
+    // Set State
+    command.setStateFinish();
     // do the default handling
-    asyncCallback.onSuccess(result);
+    onProxySuccess(result);
     // do the SeMa4g handling
-    command.onSuccess();
+    command.trigger();
   }
+
+  protected abstract void onProxyFailure(Throwable caught);
+
+  protected abstract void onProxySuccess(T result);
+
 }

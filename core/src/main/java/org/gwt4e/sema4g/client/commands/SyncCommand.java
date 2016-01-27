@@ -32,8 +32,6 @@
 
 package org.gwt4e.sema4g.client.commands;
 
-import org.gwt4e.sema4g.client.commands.helper.AbstractCommand;
-
 /**
  * <p>A synchronous command to use with SeMa4g.</p>
  */
@@ -51,6 +49,6 @@ public abstract class SyncCommand
     // calll super run-method
     super.run();
     // update state
-    super.setState(State.FINISH);
+    setState(State.FINISH);
   }
 }
