@@ -184,6 +184,17 @@ public class SeMa4g {
   }
 
   /**
+   * This command can be called to finish an execution and
+   * start the next one.
+   */
+  public void signalFinish() {
+    // set state
+    this.state = State.FINISH;
+    // trigger another command
+    executeRun();
+  }
+
+  /**
    * Resets all commands of the execution context
    */
   public void reset() {
