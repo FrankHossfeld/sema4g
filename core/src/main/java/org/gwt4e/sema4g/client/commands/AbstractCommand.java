@@ -182,6 +182,15 @@ public abstract class AbstractCommand
   }
 
   /**
+   * This command can be called to finish an execution and
+   * start the next one.
+   */
+  public void signalFinish() {
+    this.state = State.FINISH;
+    executionContext.signalFinish();
+  }
+
+  /**
    * Use this method to implement the execution code.
    * <br><br>
    * This method is ionvoked by the framework.
