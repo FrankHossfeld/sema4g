@@ -1,7 +1,7 @@
 SeMa4g
 ======
 
-To know more have a look to [SeMa4g web site](http://sema4g.github.io/)
+To know more have a look at [SeMa4g web site](http://sema4g.github.io/)
 
 Description
 -----------
@@ -17,5 +17,3 @@ Features
 * commands can depend on other commands (the comand will not start before the depending command has finieshed)
 * supports GWT RPC and Resty-GWT
 * no generators
-
-
