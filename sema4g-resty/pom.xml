@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>sema4g-parent</artifactId>
+    <groupId>de.gishmo.gwt</groupId>
+    <version>1.5-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>sema4g-resty</artifactId>
+  <packaging>gwt-lib</packaging>
+  <description>Provide SeMa4g-Support for RestyGWT</description>
+
+  <properties>
+    <restyGWT.version>2.2.0</restyGWT.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.gishmo.gwt</groupId>
+      <artifactId>sema4g</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.fusesource.restygwt</groupId>
+      <artifactId>restygwt</artifactId>
+      <version>${restyGWT.version}</version>
+    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>com.google.code.findbugs</groupId>-->
+    <!--<artifactId>jsr305</artifactId>-->
+    <!--<version>3.0.0</version>-->
+    <!--</dependency>-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>com.google.testing.compile</groupId>-->
+    <!--<artifactId>compile-testing</artifactId>-->
+    <!--<scope>test</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.mockito</groupId>-->
+    <!--<artifactId>mockito-core</artifactId>-->
+    <!--<scope>test</scope>-->
+    <!--</dependency>-->
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skipTests>true</skipTests>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>net.ltgt.gwt.maven</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>1.0-rc-6</version>
+        <configuration>
+          <moduleName>de.gishmo.de.gishmo.mvp4g2.Mvp4g2</moduleName>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>

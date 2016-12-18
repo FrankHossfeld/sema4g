@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/resty/resty.iml" filepath="$PROJECT_DIR$/resty/resty.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sema4g.iml" filepath="$PROJECT_DIR$/sema4g.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sema4g-client/sema4g-client.iml" filepath="$PROJECT_DIR$/sema4g-client/sema4g-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sema4g-parent.iml" filepath="$PROJECT_DIR$/sema4g-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sema4g-resty/sema4g-resty.iml" filepath="$PROJECT_DIR$/sema4g-resty/sema4g-resty.iml" />
     </modules>
   </component>
 </project>

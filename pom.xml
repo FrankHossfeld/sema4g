@@ -4,20 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.gwt4e.sema4g</groupId>
+
+  <groupId>de.gishmo.gwt</groupId>
   <artifactId>sema4g-parent</artifactId>
-  <version>1.4.1</version>
+  <version>1.5-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>sema4g (parent)</name>
+  <name>sema4g parent</name>
   <description>Managing asynchronous calls in GWT</description>
-  <url>https://github.com/FrankHossfeld/sema4g</url>
+  <url>https://github.com/frankhossfeld/sema4g</url>
 
-  <developers>
-    <developer>
-      <name>Frank Hossfeld</name>
-    </developer>
-  </developers>
-
+  <inceptionYear>2016</inceptionYear>
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -26,26 +22,54 @@
     </license>
   </licenses>
 
+  <developers>
+    <developer>
+      <name>Frank Hossfeld</name>
+      <id>frankhossfeld</id>
+      <email>frank.hossfeld@hossfeld-solutions.de</email>
+      <roles>
+        <role>+Java Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
   <scm>
     <connection>scm:git:https://github.com/FrankHossfeld/sema4g</connection>
     <developerConnection>scm:git:https://github.com/FrankHossfeld/sema4g</developerConnection>
     <url>scm:git:https://github.com/FrankHossfeld/sema4g</url>
+    <tag>HEAD</tag>
   </scm>
 
-  <modules>
-    <module>core</module>
-    <module>resty</module>
-  </modules>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/mvp4g/mvp4g2/issues</url>
+  </issueManagement>
+
+  <prerequisites>
+    <maven>3</maven>
+  </prerequisites>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Convenience property to set the GWT version -->
-    <gwtVersion>2.7.0</gwtVersion>
+    <gwtVersion>2.8.0</gwtVersion>
 
     <!-- GWT needs at least java 1.6 -->
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+
+    <junit.version>4.12</junit.version>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <org.mockito.version>1.10.19</org.mockito.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
+
+  <modules>
+    <module>sema4g-client</module>
+    <module>sema4g-resty</module>
+  </modules>
 
   <dependencyManagement>
     <dependencies>
@@ -56,101 +80,96 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <!--<dependency>-->
+        <!--<groupId>com.google.testing.compile</groupId>-->
+        <!--<artifactId>compile-testing</artifactId>-->
+        <!--<version>${compile.testing.version</version>-->
+        <!--<scope>test</scope>-->
+      <!--</dependency>-->
+      <!--<dependency>-->
+        <!--<groupId>org.mockito</groupId>-->
+        <!--<artifactId>mockito-core</artifactId>-->
+        <!--<version>${org.mockito.version}</version>-->
+        <!--<scope>test</scope>-->
+      <!--</dependency>-->
     </dependencies>
   </dependencyManagement>
-
-  <dependencies>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-servlet</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-user</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-dev</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 
   <build>
     <pluginManagement>
       <plugins>
-        <!--<plugin>-->
-        <!--<artifactId>maven-invoker-plugin</artifactId>-->
-        <!--<version>1.7</version>-->
-        <!--</plugin>-->
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.2</version>
+          <version>3.6.0</version>
+          <configuration>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+          </configuration>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>2.5</version>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.19.1</version>
         </plugin>
         <plugin>
-          <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.6</version>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
         </plugin>
         <plugin>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>2.3.2</version>
+          <groupId>net.ltgt.gwt.maven</groupId>
+          <artifactId>gwt-maven-plugin</artifactId>
+          <version>1.0-rc-6</version>
+          <extensions>true</extensions>
+          <configuration>
+            <skipModule>true</skipModule>
+            <failOnError>true</failOnError>
+            <compilerArgs>
+              <!-- arg>-generateJsInteropExports</arg-->
+              <arg>-XdisableUpdateCheck</arg>
+            </compilerArgs>
+            <useCompilerArgsForTests>true</useCompilerArgsForTests>
+            <codeserverArgs>
+              <!-- arg>-generateJsInteropExports</arg-->
+              <arg>-XdisableUpdateCheck</arg>
+            </codeserverArgs>
+            <devmodeArgs>
+              <!-- arg>-generateJsInteropExports</arg-->
+              <arg>-XdisableUpdateCheck</arg>
+            </devmodeArgs>
+            <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <additionalparam>-Xdoclint:none</additionalparam>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
 
     <plugins>
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>net.ltgt.gwt.maven</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <inherited>false</inherited>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.3</version>
         <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
-          <compilerArgument>-Xlint:all</compilerArgument>
-          <showWarnings>true</showWarnings>
-          <showDeprecation>true</showDeprecation>
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <developmentVersion>HEAD-SNAPSHOT</developmentVersion>
+          <tagNameFormat>v@{project.version}</tagNameFormat>
         </configuration>
       </plugin>
-
-      <!--<plugin>-->
-        <!--<artifactId>maven-release-plugin</artifactId>-->
-        <!--<configuration>-->
-          <!--<autoVersionSubmodules>true</autoVersionSubmodules>-->
-        <!--</configuration>-->
-      <!--</plugin>-->
-
-      <!--<plugin>-->
-        <!--<artifactId>maven-javadoc-plugin</artifactId>-->
-        <!--<configuration>-->
-          <!--<doctitle>SeMa4g Dependency Injection ${project.version} API</doctitle>-->
-        <!--</configuration>-->
-      <!--</plugin>-->
-
-      <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-gpg-plugin</artifactId>-->
-        <!--<configuration>-->
-          <!--<useAgent>true</useAgent>-->
-        <!--</configuration>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<id>sign-artifacts</id>-->
-            <!--<phase>verify</phase>-->
-            <!--<goals>-->
-              <!--<goal>sign</goal>-->
-            <!--</goals>-->
-          <!--</execution>-->
-        <!--</executions>-->
-      <!--</plugin>-->
     </plugins>
   </build>
 </project>
