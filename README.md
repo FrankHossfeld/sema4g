@@ -15,4 +15,5 @@ Features
 * final comands: commands, that will be executed after all calls have finished
 * unlimited server calls
 * commands can depend on other commands<br/>(A comand will not start before the depending command has finished)
-* supports GWT RPC and Resty-GWT
+* supports GWT RPC, GWT RequestBuilder and Resty-GWT
+* supports synchronous code execution
