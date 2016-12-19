@@ -14,7 +14,7 @@ public class SeMa4gSetUp
   extends AbstractSeMa4g {
 
   @Test
-  public void noCommands() {
+  public void testNoCommands() {
     try {
       SeMa4g semagContext = SeMa4g.builder()
                                   .build();
@@ -27,7 +27,7 @@ public class SeMa4gSetUp
   }
 
   @Test
-  public void noInitCommand() {
+  public void testNoInitCommand() {
     try {
       SeMa4g semagContext = SeMa4g.builder()
                                   .addFinalCommand(super.createFinalCommand())
@@ -41,7 +41,7 @@ public class SeMa4gSetUp
   }
 
   @Test
-  public void noFinalCommand() {
+  public void testNoFinalCommand() {
     try {
       SeMa4g semagContext = SeMa4g.builder()
                                   .addInitCommand(super.createInitCommand())
@@ -55,7 +55,7 @@ public class SeMa4gSetUp
   }
 
   @Test
-  public void noCommand() {
+  public void testNoCommand() {
     try {
       SeMa4g semagContext = SeMa4g.builder()
                                   .addInitCommand(super.createInitCommand())

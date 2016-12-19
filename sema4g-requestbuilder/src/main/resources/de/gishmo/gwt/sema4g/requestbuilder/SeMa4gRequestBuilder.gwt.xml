@@ -4,7 +4,6 @@
   <inherits name='com.google.gwt.user.User' />
 
   <!-- Other module inherits                                      -->
-  <inherits name="org.fusesource.restygwt.RestyGWT"/>
   <inherits name="de.gishmo.gwt.sema4g.SeMa4g"/>
 
   <!-- Specify the paths for translatable code                    -->

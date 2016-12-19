@@ -69,6 +69,9 @@
   <modules>
     <module>sema4g-client</module>
     <module>sema4g-resty</module>
+    <module>sema4g-rpc</module>
+    <module>sema4g-requestbuilder</module>
+    <module>sema4g-example</module>
   </modules>
 
   <dependencyManagement>

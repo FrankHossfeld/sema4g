@@ -14,11 +14,12 @@
  * the License.
  */
 
-package de.gishmo.gwt.sema4g.client.command.proxy;
+package de.gishmo.gwt.sema4g.rpc.client.command.proxy;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import de.gishmo.gwt.sema4g.client.command.AsyncCommand;
+import de.gishmo.gwt.sema4g.client.command.proxy.SeMa4gProxy;
 
 /**
  * <p>Add support for AsyncCallback in GWT {@link AsyncCallback}</p>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>RpcService</servlet-name>
+    <servlet-class>de.gishmo.gwt.sema4g.example.server.RpcServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RpcService</servlet-name>
+    <url-pattern>/Sema4gExample/rpcService</url-pattern>
+  </servlet-mapping>
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>SeMa4gExample.html</welcome-file>
+  </welcome-file-list>
+</web-app>

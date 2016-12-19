@@ -14,13 +14,14 @@
  * the License.
  */
 
-package de.gishmo.gwt.sema4g.client.command.proxy;
+package de.gishmo.gwt.sema4g.requestbuilder.command.proxy;
 
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.Response;
 
 import de.gishmo.gwt.sema4g.client.command.AsyncCommand;
+import de.gishmo.gwt.sema4g.client.command.proxy.SeMa4gProxy;
 
 /**
  * <p>Add support for RequestCallback in GWT {@link RequestCallback}</p>

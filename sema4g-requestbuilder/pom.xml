@@ -9,9 +9,9 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>sema4g-resty</artifactId>
+  <artifactId>sema4g-requestbuilder</artifactId>
   <packaging>gwt-lib</packaging>
-  <description>Provide SeMa4g-Support for RestyGWT</description>
+  <description>Provide SeMa4g-Support for GWT RequestBuilder</description>
 
   <properties>
     <restyGWT.version>2.2.0</restyGWT.version>
@@ -30,11 +30,6 @@
       <groupId>de.gishmo.gwt</groupId>
       <artifactId>sema4g</artifactId>
       <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.fusesource.restygwt</groupId>
-      <artifactId>restygwt</artifactId>
-      <version>${restyGWT.version}</version>
     </dependency>
     <!--<dependency>-->
     <!--<groupId>com.google.code.findbugs</groupId>-->
