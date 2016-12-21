@@ -16,4 +16,4 @@ Features
 * unlimited server calls
 * commands can depend on other commands<br/>(A comand will not start before the depending command has finished)
 * supports GWT RPC, GWT RequestBuilder and Resty-GWT
-* supports synchronous code execution
+* supports synchronous code execution in a call chain
