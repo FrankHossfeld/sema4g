@@ -22,7 +22,7 @@ public class SeMa4gSetUp
       fail("no exception fired!");
     } catch (SeMa4gException e) {
       assertEquals(e.getMessage(),
-                   SeMa4gConstants.ERROR_NO_INIT_COMMAND);
+                   SeMa4gConstants.ERROR_NO_FINAL_COMMAND);
     }
   }
 
@@ -33,10 +33,8 @@ public class SeMa4gSetUp
                                   .addFinalCommand(super.createFinalCommand())
                                   .build();
       semagContext.run();
-      fail("no exception fired!");
     } catch (SeMa4gException e) {
-      assertEquals(e.getMessage(),
-                   SeMa4gConstants.ERROR_NO_INIT_COMMAND);
+      fail("no exception expected!");
     }
   }
 
@@ -62,10 +60,8 @@ public class SeMa4gSetUp
                                   .addFinalCommand(super.createFinalCommand())
                                   .build();
       semagContext.run();
-      fail("no exception fired!");
     } catch (SeMa4gException e) {
-      assertEquals(e.getMessage(),
-                   SeMa4gConstants.ERROR_NO_COMMAND);
+      fail("no exception accepted!");
     }
   }
 

@@ -34,8 +34,9 @@ package de.gishmo.gwt.sema4g.example.client.cases;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
-import org.gwt4e.example.sema4g.client.cases.code.IsExampleCase;
-import org.gwt4e.example.sema4g.client.cases.code.SourceCode;
+
+import de.gishmo.gwt.sema4g.example.client.cases.code.IsExampleCase;
+import de.gishmo.gwt.sema4g.example.client.cases.code.SourceCode;
 
 public class Case02
   extends AbstractCase
@@ -43,30 +44,30 @@ public class Case02
 
   public Case02(FlowPanel fp,
                 PopupPanel popup) {
-    super(fp,
-          popup);
-
-    buttonText = "Start Two";
-    descriptionText = "Several service calls with no dependencies and a InitCommand and a FinishCommand.";
-    labelText = "Test Case 02";
-    startText = "Execution for test case two started";
-    successText = "Execution for case two finished";
-    errorText = "Execution for case two failed";
+//    super(fp,
+//          popup);
+//
+//    buttonText = "Start Two";
+//    descriptionText = "Several service calls with no dependencies and a InitCommand and a FinishCommand.";
+//    labelText = "Test Case 02";
+//    startText = "Execution for test case two started";
+//    successText = "Execution for case two finished";
+//    errorText = "Execution for case two failed";
   }
 
   @SourceCode
   protected void createContext() {
-    context.addInit(this.initCommand())
-           .add(this.createAsyncCommandRPC(2500,
-                                           "one"))
-           .add(this.createAsyncCommandRPC(125,
-                                           "two"))
-           .add(this.createAsyncCommandRPC(12500,
-                                           "three"))
-           .add(this.createAsyncCommandRPC(8750,
-                                           "four"))
-           .add(this.createAsyncCommandRPC(125,
-                                           "five"))
-           .addFinal(this.finalCommand());
+//    context.addInit(this.initCommand())
+//           .add(this.createAsyncCommandRPC(2500,
+//                                           "one"))
+//           .add(this.createAsyncCommandRPC(125,
+//                                           "two"))
+//           .add(this.createAsyncCommandRPC(12500,
+//                                           "three"))
+//           .add(this.createAsyncCommandRPC(8750,
+//                                           "four"))
+//           .add(this.createAsyncCommandRPC(125,
+//                                           "five"))
+//           .addFinal(this.finalCommand());
   }
 }

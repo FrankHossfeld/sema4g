@@ -87,6 +87,12 @@ public class SeMa4g {
       }
       // execute all init-commands
       this.executeInitCommands();
+      // check, if there are any commands to execute.
+      // if not, set the state to finish!
+      if (this.seMa4gCommands.size() == 0) {
+        // no commands to execute ==> set state to finish!
+        this.state = State.FINISH;
+      }
       // start the coomand calls
       this.executeRun();
     } else {
@@ -96,17 +102,9 @@ public class SeMa4g {
 
   private void validateContext()
     throws SeMa4gException {
-    // are there at least one InitCommand?
-    if (this.initCommands.size() < 1) {
-      throw new SeMa4gException(SeMa4gConstants.ERROR_NO_INIT_COMMAND);
-    }
-    // are there at least one FinalCommad?
+     // are there at least one FinalCommad?
     if (this.finalCommands.size() < 1) {
       throw new SeMa4gException(SeMa4gConstants.ERROR_NO_FINAL_COMMAND);
-    }
-    // at least one command should be added
-    if (this.seMa4gCommands.size() < 1) {
-      throw new SeMa4gException(SeMa4gConstants.ERROR_NO_COMMAND);
     }
   }
 
