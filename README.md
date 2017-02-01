@@ -1,12 +1,12 @@
 SeMa4g
 ======
 
-To know more have a look at [SeMa4g wiki](https://github.com/FrankHossfeld/sema4g/wiki/SeMa4g)
-
 Description
 -----------
 
 A light-weighted framework to manage asynchronous calls in GWT.
+
+In many cases it is neccessary to do several server calls to get a view updated. 
 
 Features
 --------
