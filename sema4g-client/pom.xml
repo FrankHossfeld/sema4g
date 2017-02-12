@@ -7,7 +7,7 @@
   <parent>
     <artifactId>sema4g-parent</artifactId>
     <groupId>de.gishmo.gwt</groupId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.5.1</version>
   </parent>
 
   <artifactId>sema4g</artifactId>

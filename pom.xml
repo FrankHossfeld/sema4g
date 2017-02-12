@@ -7,13 +7,13 @@
 
   <groupId>de.gishmo.gwt</groupId>
   <artifactId>sema4g-parent</artifactId>
-  <version>1.5-SNAPSHOT</version>
+  <version>1.5.1</version>
   <packaging>pom</packaging>
   <name>sema4g parent</name>
   <description>Managing asynchronous calls in GWT</description>
   <url>https://github.com/frankhossfeld/sema4g</url>
 
-  <inceptionYear>2016</inceptionYear>
+  <inceptionYear>2017</inceptionYear>
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -58,8 +58,6 @@
     <maven.compiler.target>1.7</maven.compiler.target>
 
     <junit.version>4.12</junit.version>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
     <org.mockito.version>1.10.19</org.mockito.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>

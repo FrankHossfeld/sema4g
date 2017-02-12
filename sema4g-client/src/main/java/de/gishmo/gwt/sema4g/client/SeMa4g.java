@@ -285,6 +285,22 @@ public class SeMa4g {
       return this;
     }
 
+    /**
+     * Adds a list of commands to the list of already added commands, which will be executed, when the context runs. <br></br> if the command is already added to the list of commands, the command will be ignored.
+     *
+     * @param commands
+     *   list of command that should be added to the list of executable commands
+     *
+     * @return executionContext
+     */
+    public Builder add(List<SeMa4gCommand> commands) {
+      for (SeMa4gCommand command : commands) {
+        seMa4gCommands.add(command);
+      }
+      // return context
+      return this;
+    }
+
     private boolean isAlreadyAddedToList(SeMa4gCommand command) {
       for (SeMa4gCommand seMa4gCommand : this.seMa4gCommands) {
         if (seMa4gCommand == command) {
