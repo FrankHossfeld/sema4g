@@ -6,7 +6,7 @@ Description
 
 A light-weighted framework to manage asynchronous calls in GWT.
 
-In many cases it is neccessary to do several server calls to get a view updated. 
+In many cases it is neccessary to do several server calls to get a GWT application started. 
 
 Features
 --------
