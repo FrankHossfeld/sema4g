@@ -6,7 +6,7 @@ Description
 
 A light-weighted framework to manage asynchronous calls in GWT.
 
-In many cases it is neccessary to do several server calls before a GWT application starts or a view can be displayed. sema4g will help you toi get this calls managed. 
+In many cases it is neccessary to do several server calls before a GWT application starts or a view can be displayed. sema4g will help you to get this calls managed. 
 
 Features
 --------
