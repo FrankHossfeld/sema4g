@@ -9,8 +9,7 @@ A light-weighted framework to manage asynchronous calls in GWT.
 In many cases it is neccessary to do several server calls before a GWT application starts or a view can be displayed. sema4g will help you to get this calls managed. 
 
 Features
---------
-
+-------
 * init commands: commands, that will be executed on start
 * final comands: commands, that will be executed after all calls have finished
 * unlimited server calls
@@ -23,20 +22,58 @@ Using
 
 To use SeMa4g it is neccessary to create a SeMa4g Builder, add all commands, build the context and call run.
 
-Create a SeMa4g context and commands:
+Create a SeMa4g context:
 
-`````
-SeMa4g.Builder semagLoadContext = SeMa4g.builder()
-                                        .addInitCommand(createInitCommand())
-                                              .addFinalCommand(createFinalCommand(historyName,
-                                                                                  params))
+```
+SeMa4g.Builder semagContext = SeMa4g.builder();
+```
 
 
-````
+Add a ```InitCommanmd``` to the SeMa4g context:
+
+```
+semagContext.addInitCommand(new InitCommand() {
+                                  @Override
+                                  public void onStart() {
+                                    // Enter here your code, that 
+                                    // should be executed when 
+                                    // the context is started
+                                  }
+                                });
+```
+I is possible to add more then one ```InitCommand``` command to the SeMa4g context.
 
 
+Add a ```FinalCommanmd``` to the SeMa4g context:
+```
+semagContext.addInitCommand(new FinalCommand() {
+                                  @Override
+                                  public void onSuccess() {
+                                    // Enter here the code, that will
+                                    // be executed in case the context
+                                    // ended without error
+                                  }
+    
+                                  @Override
+                                  public void onFailure() {
+                                    // Enter here the code, that will
+                                    // be executed in case the context
+                                    // ended with an error
+                                  });
+```
+SeMa4G allows only one ```FinalCommanmd``` adding to the SeMa4g context.
 
-
+Adding a command to the SeMa4G context is quite easy:
+```
+semagContext.add(new SyncCommand() {
+                       @Override
+                       public void execute() {
+                         // Enter here the code, that will
+                         // be executed, in case the SeMa4g
+                         // context will execute the command.
+                       }
+                     });...
+```
 
 
 
@@ -47,11 +84,13 @@ Downloading
 
 Use the "Clone or download" button at the top right of this page to get the source. You can get a pre-built JAR (usable in JRE 1.7 or later) from Sonatype, or add the following Maven Central dependency:
 
+```
 <dependency>
     <groupId>de.gishmo.gwt</groupId>
     <artifactId>sema4g</artifactId>
     <version>LATEST</version>
 </dependency>
+```
 
 License
 -------
