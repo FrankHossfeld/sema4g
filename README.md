@@ -1,12 +1,12 @@
 #SeMa4g
 
-##Description
+## Description
 
 A light-weighted framework to manage asynchronous calls in GWT.
 
 In many cases it is neccessary to do several server calls before a GWT application starts or a view can be displayed. sema4g will help you to get this calls managed. 
 
-##Features
+## Features
 * init commands: commands, that will be executed on start
 * final comands: commands, that will be executed after all calls have finished
 * unlimited server calls
@@ -14,8 +14,8 @@ In many cases it is neccessary to do several server calls before a GWT applicati
 * supports GWT RPC, GWT RequestBuilder and Resty-GWT
 * supports synchronous code execution in a call chain
 
-##Using
-###Create a SeMa4g Context
+## Using
+### Create a SeMa4g Context
 To use SeMa4g it is neccessary to create a SeMa4g Builder, add all commands, build the context and call run.
 
 Create a SeMa4g context:
@@ -24,7 +24,7 @@ Create a SeMa4g context:
 SeMa4g.Builder semagContext = SeMa4g.builder();
 ```
 
-###Create a InitCommand and add it to the SeMa4g context 
+### Create a InitCommand and add it to the SeMa4g context 
 Add a ```InitCommanmd``` to the SeMa4g context:
 
 ```
@@ -39,7 +39,7 @@ semagContext.addInitCommand(new InitCommand() {
 ```
 I is possible to add more then one ```InitCommand``` command to the SeMa4g context.
 
-###Create a FinalCommand and add it to the SeMa4G context
+### Create a FinalCommand and add it to the SeMa4G context
 Add a ```FinalCommanmd``` to the SeMa4g context:
 ```
 semagContext.addInitCommand(new FinalCommand() {
@@ -59,7 +59,7 @@ semagContext.addInitCommand(new FinalCommand() {
 ```
 SeMa4G allows only one ```FinalCommanmd``` adding to the SeMa4g context.
 
-###Create a command and add it to the context
+### Create a command and add it to the context
 Adding a command to the SeMa4G context is quite easy:
 ```
 semagContext.add(new SyncCommand() {
@@ -75,10 +75,10 @@ semagContext.add(new SyncCommand() {
 
 
 
-#More documentation: TO BE DONE ...
+# More documentation: TO BE DONE ...
 
 
-##Downloading
+## Downloading
 Use the "Clone or download" button at the top right of this page to get the source. You can get a pre-built JAR (usable in JRE 1.7 or later) from Sonatype, or add the following Maven Central dependency:
 
 ```
@@ -89,7 +89,7 @@ Use the "Clone or download" button at the top right of this page to get the sour
 </dependency>
 ```
 
-##License
+## License
 The MIT License (MIT)
 
 Copyright (c) 2016 Frank Hossfeld
