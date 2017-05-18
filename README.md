@@ -72,7 +72,7 @@ semagContext.add(new SyncCommand() {
                          // be executed, in case the SeMa4g
                          // context will execute the command.
                        }
-                     });...
+                     });
 ```
 
 
