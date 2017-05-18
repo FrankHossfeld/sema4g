@@ -61,7 +61,7 @@ SeMa4g allows only one ```FinalCommanmd``` adding to the SeMa4g context.
 
 ### Create a command and add it to the SeMa4g context
 Adding a command to the SeMa4g context is quite easy:
-```
+```Java
 semagContext.add(new SyncCommand() {
                        @Override
                        public void execute() {
