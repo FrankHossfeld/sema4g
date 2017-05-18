@@ -1,4 +1,4 @@
-#SeMa4g
+# SeMa4g
 
 ## Description
 
@@ -20,14 +20,14 @@ To use SeMa4g it is neccessary to create a SeMa4g Builder, add all commands, bui
 
 Create a SeMa4g context:
 
-```
+```Java
 SeMa4g.Builder semagContext = SeMa4g.builder();
 ```
 
 ### Create a InitCommand and add it to the SeMa4g context 
 Add a ```InitCommanmd``` to the SeMa4g context:
 
-```
+```Java
 semagContext.addInitCommand(new InitCommand() {
                                   @Override
                                   public void onStart() {
@@ -39,9 +39,9 @@ semagContext.addInitCommand(new InitCommand() {
 ```
 I is possible to add more then one ```InitCommand``` command to the SeMa4g context.
 
-### Create a FinalCommand and add it to the SeMa4G context
+### Create a FinalCommand and add it to the SeMa4g context
 Add a ```FinalCommanmd``` to the SeMa4g context:
-```
+```Java
 semagContext.addInitCommand(new FinalCommand() {
                                   @Override
                                   public void onSuccess() {
@@ -57,10 +57,10 @@ semagContext.addInitCommand(new FinalCommand() {
                                     // ended with an error
                                   });
 ```
-SeMa4G allows only one ```FinalCommanmd``` adding to the SeMa4g context.
+SeMa4g allows only one ```FinalCommanmd``` adding to the SeMa4g context.
 
-### Create a command and add it to the context
-Adding a command to the SeMa4G context is quite easy:
+### Create a command and add it to the SeMa4g context
+Adding a command to the SeMa4g context is quite easy:
 ```
 semagContext.add(new SyncCommand() {
                        @Override
@@ -92,7 +92,7 @@ Use the "Clone or download" button at the top right of this page to get the sour
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2016 Frank Hossfeld
+Copyright (c) 2015 - 2017 Frank Hossfeld
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
