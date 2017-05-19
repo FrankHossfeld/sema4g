@@ -6,15 +6,43 @@ A light-weighted framework to manage asynchronous calls in GWT.
 
 In many cases it is neccessary to do several server calls before a GWT application starts or a view can be displayed. sema4g will help you to get this calls managed. 
 
+The idea of SeMa4g is to use a callback proxy. The asyncronized server call will use the callback classes for SeMa4g. This allows SeMa4g to get informed if a server call has finished.
+
 ## Features
 * init commands: commands, that will be executed on start
-* final comands: commands, that will be executed after all calls have finished
+* final comands: a command, that will be executed after all calls have finished
 * unlimited server calls
 * commands can depend on other commands<br/>(A comand will not start before the depending command has finished)
 * supports GWT RPC, GWT RequestBuilder and Resty-GWT
 * supports synchronous code execution in a call chain
 
 ## Using
+### Configure the Module Descriptor
+
+Configure the GWT project to inherit the SeMa4g module.
+
+* Insert the SeMa4g module into the project's module descriptor
+```
+  <!-- Other module inherits -->
+  <inherits name="com.google.gwt.debug.Debug"/>
+```
+
+
+* Depending on the type of server communication, add the corresponding SeMa4g Module:
+    * GWT RPC:
+    ```
+    <inherits name="de.gishmo.gwt.sema4g.rpc.SeMa4gRPC"/>
+    ```
+    * GWT RequestBuilder:
+    ```
+    <inherits name="de.gishmo.gwt.sema4g.requestbuilder.SeMa4gRequestBuilder"/>
+    ```
+    * GWT Resty-GWT:
+    ```
+    <inherits name="de.gishmo.gwt.sema4g.resty.SeMa4gResty"/>
+    ```
+
+
 ### Create a SeMa4g Context
 To use SeMa4g it is neccessary to create a SeMa4g Builder, add all commands, build the context and call run.
 
@@ -25,7 +53,7 @@ SeMa4g.Builder semagContext = SeMa4g.builder();
 ```
 
 ### Create a InitCommand and add it to the SeMa4g context 
-Add a ```InitCommanmd``` to the SeMa4g context:
+Add a `InitCommanmd` to the SeMa4g context:
 
 ```Java
 semagContext.addInitCommand(new InitCommand() {
@@ -40,7 +68,7 @@ semagContext.addInitCommand(new InitCommand() {
 I is possible to add more then one ```InitCommand``` command to the SeMa4g context.
 
 ### Create a FinalCommand and add it to the SeMa4g context
-Add a ```FinalCommanmd``` to the SeMa4g context:
+Add a `FinalCommanmd` to the SeMa4g context:
 ```Java
 semagContext.addInitCommand(new FinalCommand() {
                                   @Override
@@ -57,7 +85,7 @@ semagContext.addInitCommand(new FinalCommand() {
                                     // ended with an error
                                   });
 ```
-SeMa4g allows only one ```FinalCommanmd``` adding to the SeMa4g context.
+SeMa4g allows only one `FinalCommanmd` adding to the SeMa4g context.
 
 ### Create a command and add it to the SeMa4g context
 Adding a command to the SeMa4g context is quite easy:
@@ -72,13 +100,17 @@ semagContext.add(new SyncCommand() {
                      });
 ```
 
+#### Type of commands
+SeMa4g knows two types of commands.
 
+##### SyncCommand
+A SyncComannd is command that 
 
 
 # More documentation: TO BE DONE ...
 
 
-## Downloading
+## Downloading (in progress)
 Use the "Clone or download" button at the top right of this page to get the source. You can get a pre-built JAR (usable in JRE 1.7 or later) from Sonatype, or add the following Maven Central dependency:
 
 ```

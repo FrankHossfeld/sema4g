@@ -9,7 +9,7 @@
   <artifactId>sema4g-parent</artifactId>
   <version>1.5.1</version>
   <packaging>pom</packaging>
-  <name>sema4g parent</name>
+  <name>SeMa4g parent</name>
   <description>Managing asynchronous calls in GWT</description>
   <url>https://github.com/frankhossfeld/sema4g</url>
 
