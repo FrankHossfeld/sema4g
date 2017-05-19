@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Frank Hossfeld
+ * Copyright 2015-2017 Frank Hossfeld
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,16 +13,15 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
 package de.gishmo.gwt.sema4g.client.command;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import de.gishmo.gwt.sema4g.client.SeMa4g;
 import de.gishmo.gwt.sema4g.client.SeMa4gConstants;
 import de.gishmo.gwt.sema4g.client.SeMa4gUtils;
 import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>AbstractCommand provides base functionality to run a SeMa4g command.</p>
@@ -92,8 +91,7 @@ public abstract class AbstractCommand
   /**
    * Sets the {@link SeMa4g} for this command.
    *
-   * @param executionContext
-   *   the {@link SeMa4g} for this command
+   * @param executionContext the {@link SeMa4g} for this command
    */
   public void setExecutionContext(SeMa4g executionContext) {
     if (executionContext != null) {
@@ -105,8 +103,7 @@ public abstract class AbstractCommand
    * Sets the {@link SeMa4gCommand.State}
    * of the command
    *
-   * @param state
-   *   the new state
+   * @param state the new state
    */
   public void setState(State state) {
     this.state = state;
@@ -116,14 +113,10 @@ public abstract class AbstractCommand
    * Definies the {@link SeMa4gCommand} (one or more) which have to
    * be finished before this command can be executed.
    *
-   * @param dependencies
-   *   list of commands which have to be finished,
-   *   before this command can be started
-   *
+   * @param dependencies list of commands which have to be finished,
+   *                     before this command can be started
    * @return the inistnace of the command
-   *
-   * @throws SeMa4gException
-   *   when a cycle dependency is detected
+   * @throws SeMa4gException when a cycle dependency is detected
    */
   public SeMa4gCommand dependingOn(SeMa4gCommand... dependencies)
     throws SeMa4gException {
@@ -141,11 +134,8 @@ public abstract class AbstractCommand
   /**
    * Checks if there is a cycle dependencies
    *
-   * @param usedDependencies
-   *   all dependencies for this command
-   *
-   * @throws SeMa4gException
-   *   when a cycle dependency is detected
+   * @param usedDependencies all dependencies for this command
+   * @throws SeMa4gException when a cycle dependency is detected
    */
   public void checkCycleDependencies(List<SeMa4gCommand> usedDependencies)
     throws SeMa4gException {

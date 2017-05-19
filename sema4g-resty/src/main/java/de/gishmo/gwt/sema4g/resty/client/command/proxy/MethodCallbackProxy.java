@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Frank Hossfeld
+ * Copyright 2015-2017 Frank Hossfeld
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,14 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
 package de.gishmo.gwt.sema4g.resty.client.command.proxy;
-
-import org.fusesource.restygwt.client.Method;
-import org.fusesource.restygwt.client.MethodCallback;
 
 import de.gishmo.gwt.sema4g.client.command.AsyncCommand;
 import de.gishmo.gwt.sema4g.client.command.proxy.SeMa4gProxy;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
 
 /**
  * <p>Add support for RestyGWT {@link MethodCallback}</p>
@@ -30,7 +28,8 @@ import de.gishmo.gwt.sema4g.client.command.proxy.SeMa4gProxy;
  * SeMa4g will not work.</p>
  */
 public abstract class MethodCallbackProxy<T>
-  implements SeMa4gProxy, MethodCallback<T> {
+  implements SeMa4gProxy,
+             MethodCallback<T> {
 
   /* execution command of this proxy */
   private AsyncCommand command;
@@ -59,15 +58,15 @@ public abstract class MethodCallbackProxy<T>
     command.setStateFinish();
     // do the default handling
     onProxySuccess(method,
-                            result);
+                   result);
     // do the SeMa4g handling
     command.trigger();
   }
 
-  protected abstract void onProxyFailure(Method method,
-                                         Throwable caught);
-
   protected abstract void onProxySuccess(Method method,
                                          T result);
+
+  protected abstract void onProxyFailure(Method method,
+                                         Throwable caught);
 
 }

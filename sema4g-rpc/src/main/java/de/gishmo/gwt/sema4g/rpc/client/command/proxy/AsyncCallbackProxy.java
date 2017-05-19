@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Frank Hossfeld
+ * Copyright 2015-2017 Frank Hossfeld
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,11 +13,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
 package de.gishmo.gwt.sema4g.rpc.client.command.proxy;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-
 import de.gishmo.gwt.sema4g.client.command.AsyncCommand;
 import de.gishmo.gwt.sema4g.client.command.proxy.SeMa4gProxy;
 

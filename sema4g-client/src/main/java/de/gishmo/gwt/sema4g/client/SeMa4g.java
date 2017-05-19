@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Frank Hossfeld
+ * Copyright 2015-2017 Frank Hossfeld
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,17 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
 package de.gishmo.gwt.sema4g.client;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import de.gishmo.gwt.sema4g.client.command.FinalCommand;
 import de.gishmo.gwt.sema4g.client.command.InitCommand;
 import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
 import de.gishmo.gwt.sema4g.client.command.SyncCommand;
 import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>The execution context manages all commands.<br>
@@ -102,7 +101,7 @@ public class SeMa4g {
 
   private void validateContext()
     throws SeMa4gException {
-     // are there at least one FinalCommad?
+    // are there at least one FinalCommad?
     if (this.finalCommands.size() < 1) {
       throw new SeMa4gException(SeMa4gConstants.ERROR_NO_FINAL_COMMAND);
     }
@@ -212,9 +211,7 @@ public class SeMa4g {
   /**
    * This methods checks weather a command has dependencies or not.
    *
-   * @param command
-   *   to be executed
-   *
+   * @param command to be executed
    * @return true -> command has no dependies
    */
   private boolean hasNoDependency(SeMa4gCommand command) {
@@ -271,30 +268,12 @@ public class SeMa4g {
     /**
      * Adds the command to the list of commands, which will be executed, when the context runs. <br></br> if the command is already added to the list of commands, the command will be ignored.
      *
-     * @param command
-     *   command that should be added to the list of executable commands
-     *
+     * @param command command that should be added to the list of executable commands
      * @return executionContext
      */
     public Builder add(SeMa4gCommand command) {
       // create server call object
       if (!isAlreadyAddedToList(command)) {
-        seMa4gCommands.add(command);
-      }
-      // return context
-      return this;
-    }
-
-    /**
-     * Adds a list of commands to the list of already added commands, which will be executed, when the context runs. <br></br> if the command is already added to the list of commands, the command will be ignored.
-     *
-     * @param commands
-     *   list of command that should be added to the list of executable commands
-     *
-     * @return executionContext
-     */
-    public Builder add(List<SeMa4gCommand> commands) {
-      for (SeMa4gCommand command : commands) {
         seMa4gCommands.add(command);
       }
       // return context
@@ -311,11 +290,23 @@ public class SeMa4g {
     }
 
     /**
+     * Adds a list of commands to the list of already added commands, which will be executed, when the context runs. <br></br> if the command is already added to the list of commands, the command will be ignored.
+     *
+     * @param commands list of command that should be added to the list of executable commands
+     * @return executionContext
+     */
+    public Builder add(List<SeMa4gCommand> commands) {
+      for (SeMa4gCommand command : commands) {
+        seMa4gCommands.add(command);
+      }
+      // return context
+      return this;
+    }
+
+    /**
      * <p>Adds a {@link FinalCommand} to the SeMa4g.</p>
      *
-     * @param finalCommand
-     *   FinalCommand
-     *
+     * @param finalCommand FinalCommand
      * @return the SeMa4g
      */
     public Builder addFinalCommand(FinalCommand finalCommand) {
@@ -328,9 +319,7 @@ public class SeMa4g {
     /**
      * <p>Adds a {@link InitCommand} to the SeMa4g.</p>
      *
-     * @param initCommand
-     *   InitCommand
-     *
+     * @param initCommand InitCommand
      * @return the SeMa4g
      */
     public Builder addInitCommand(InitCommand initCommand) {

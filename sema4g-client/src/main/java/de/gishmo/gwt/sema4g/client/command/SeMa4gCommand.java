@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Frank Hossfeld
+ * Copyright 2015-2017 Frank Hossfeld
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,13 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
 package de.gishmo.gwt.sema4g.client.command;
-
-import java.util.List;
 
 import de.gishmo.gwt.sema4g.client.SeMa4g;
 import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
+
+import java.util.List;
 
 /**
  * This interface provide all needed methods to interact with the
@@ -30,11 +29,8 @@ public interface SeMa4gCommand {
   /**
    * Checks if there is a cycle dependencies for this command.
    *
-   * @param usedDependencies
-   *   all dependencies for this command
-   *
-   * @throws SeMa4gException
-   *   when a cycle dependency is detected
+   * @param usedDependencies all dependencies for this command
+   * @throws SeMa4gException when a cycle dependency is detected
    */
   void checkCycleDependencies(List<SeMa4gCommand> usedDependencies)
     throws SeMa4gException;
@@ -43,14 +39,10 @@ public interface SeMa4gCommand {
    * Definies the {@link SeMa4gCommand} (one or more) which have to
    * be finished before this command can be executed.
    *
-   * @param dependencies
-   *   list of commands which have to be finished,
-   *   before this command can be started
-   *
+   * @param dependencies list of commands which have to be finished,
+   *                     before this command can be started
    * @return the inistnace of the command
-   *
-   * @throws SeMa4gException
-   *   when a cycle dependency is detected
+   * @throws SeMa4gException when a cycle dependency is detected
    */
   SeMa4gCommand dependingOn(SeMa4gCommand... dependencies)
     throws SeMa4gException;
@@ -73,8 +65,7 @@ public interface SeMa4gCommand {
   /**
    * Sets the {@link SeMa4g} for this command.
    *
-   * @param executionContext
-   *   the {@link SeMa4g} for this command
+   * @param executionContext the {@link SeMa4g} for this command
    */
   void setExecutionContext(SeMa4g executionContext);
 
@@ -89,8 +80,7 @@ public interface SeMa4gCommand {
    * Sets the {@link State}
    * of the command
    *
-   * @param state
-   *   the new state
+   * @param state the new state
    */
   void setState(State state);
 

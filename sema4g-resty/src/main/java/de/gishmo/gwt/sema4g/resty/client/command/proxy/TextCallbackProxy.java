@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Frank Hossfeld
+ * Copyright 2015-2017 Frank Hossfeld
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,14 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
 package de.gishmo.gwt.sema4g.resty.client.command.proxy;
-
-import org.fusesource.restygwt.client.Method;
-import org.fusesource.restygwt.client.TextCallback;
 
 import de.gishmo.gwt.sema4g.client.command.AsyncCommand;
 import de.gishmo.gwt.sema4g.client.command.proxy.SeMa4gProxy;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.TextCallback;
 
 /**
  * <p>Add support for RestyGWT {@link TextCallback}</p>
@@ -65,9 +63,9 @@ public abstract class TextCallbackProxy
     command.trigger();
   }
 
-  protected abstract void onProxyFailure(Method method,
-                                         Throwable caught);
-
   protected abstract void onProxySuccess(Method method,
                                          String result);
+
+  protected abstract void onProxyFailure(Method method,
+                                         Throwable caught);
 }
