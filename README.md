@@ -65,7 +65,7 @@ sema4gContext.addInitCommand(new InitCommand() {
                                    }
                                  });
 ```
-I is possible to add more then one ```InitCommand``` command to the SeMa4g context.
+It is possible to add more then one ```InitCommand``` command to the SeMa4g context.
 
 ### Create a FinalCommand and add it to the SeMa4g context
 Add a `FinalCommanmd` to the SeMa4g context:
