@@ -321,6 +321,9 @@ private SeMa4gCommand createAsyncCommand02() {
 }
 ```
 
+## To Do
+1. Update example
+
 ## Downloading
 Use the "Clone or download" button at the top right of this page to get the source. You can get a pre-built JAR (usable in JRE 1.7 or later) from Sonatype (in progress), download the jar form [here](https://github.com/FrankHossfeld/sema4g/releases) , or add the following Maven Central dependency:
 
