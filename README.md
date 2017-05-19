@@ -22,7 +22,7 @@ The idea of SeMa4g is to use a callback proxy. The asyncronized server call will
 Configure the GWT project to inherit the SeMa4g module.
 
 * Insert the SeMa4g module into the project's module descriptor
-```
+```GWT
   <!-- Other module inherits -->
   <inherits name="com.google.gwt.debug.Debug"/>
 ```
@@ -30,15 +30,15 @@ Configure the GWT project to inherit the SeMa4g module.
 
 * Depending on the type of server communication, add the corresponding SeMa4g Module:
     * GWT RPC:
-    ```
+    ```GWT
     <inherits name="de.gishmo.gwt.sema4g.rpc.SeMa4gRPC"/>
     ```
     * GWT RequestBuilder:
-    ```
+    ```GWT
     <inherits name="de.gishmo.gwt.sema4g.requestbuilder.SeMa4gRequestBuilder"/>
     ```
     * GWT Resty-GWT:
-    ```
+    ```GWT
     <inherits name="de.gishmo.gwt.sema4g.resty.SeMa4gResty"/>
     ```
 
@@ -100,11 +100,11 @@ semagContext.add(new SyncCommand() {
                      });
 ```
 
-#### Type of commands
+### Type of commands
 SeMa4g knows two types of commands.
 
-##### SyncCommand
-A SyncComannd is command that 
+#### SyncCommand
+A SyncComannd is command that
 
 
 # More documentation: TO BE DONE ...
