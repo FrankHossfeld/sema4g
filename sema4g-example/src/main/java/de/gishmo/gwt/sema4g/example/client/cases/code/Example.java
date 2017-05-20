@@ -18,5 +18,5 @@ package de.gishmo.gwt.sema4g.example.client.cases.code;
 import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.RUNTIME)
-public @interface TestCase {
+public @interface Example {
 }
