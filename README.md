@@ -189,7 +189,7 @@ sema4gContext.add(command01)
 #### Manually stop execution
 SeMa4g offers two commands, that will interrupt the execution of a running SeMa4gContext.
 
-* `signalFisnish()`-method<br/>Calling this method will stop the execution.<br/>* SeMa4g will wait until all running commands has ended<br/>* SeMa4g will not start any new command<br/>* SeMa4g will call the `onSuccess`-mthod of the `FinalCommand`
+* `signalFinish()`-method<br/>Calling this method will stop the execution.<br/>* SeMa4g will wait until all running commands has ended<br/>* SeMa4g will not start any new command<br/>* SeMa4g will call the `onSuccess`-mthod of the `FinalCommand`
 
 * `signalError()`-method<br/>Calling this method will stop the execution.<br/>* SeMa4g will wait until all running commands has ended<br/>* SeMa4g will not start any new command<br/>* SeMa4g will call the `onFailure`-mthod of the `FinalCommand`
 
@@ -320,9 +320,6 @@ private SeMa4gCommand createAsyncCommand02() {
   }
 }
 ```
-
-## To Do
-1. Update example
 
 ## Downloading
 Use the "Clone or download" button at the top right of this page to get the source. You can get a pre-built JAR (usable in JRE 1.7 or later) from Sonatype (in progress), download the jar form [here](https://github.com/FrankHossfeld/sema4g/releases) , or add the following Maven Central dependency:
