@@ -189,9 +189,9 @@ sema4gContext.add(command01)
 #### Manually stop execution
 SeMa4g offers two commands, that will interrupt the execution of a running SeMa4gContext.
 
-* `signalFinish()`-method<br/>Calling this method will stop the execution.<br/>* SeMa4g will wait until all running commands has ended<br/>* SeMa4g will not start any new command<br/>* SeMa4g will call the `onSuccess`-mthod of the `FinalCommand`
+* `signalFinish()`-method<br/>Calling this method will stop the execution.<br/>* SeMa4g will wait until all running commands has ended<br/>* SeMa4g will not start any new command<br/>* SeMa4g will call the `onSuccess`-method of the `FinalCommand`
 
-* `signalError()`-method<br/>Calling this method will stop the execution.<br/>* SeMa4g will wait until all running commands has ended<br/>* SeMa4g will not start any new command<br/>* SeMa4g will call the `onFailure`-mthod of the `FinalCommand`
+* `signalError()`-method<br/>Calling this method will stop the execution.<br/>* SeMa4g will wait until all running commands has ended<br/>* SeMa4g will not start any new command<br/>* SeMa4g will call the `onFailure`-method of the `FinalCommand`
 
 
 #### Complex example
