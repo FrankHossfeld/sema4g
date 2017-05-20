@@ -35,9 +35,10 @@
   <!-- Other module inherits                                      -->
   <inherits name="de.gishmo.gwt.sema4g.SeMa4g"/>
   <inherits name="com.google.web.bindery.autobean.AutoBean"/>
+  <inherits name="de.gishmo.gwt.sema4g.rpc.SeMa4gRPC"/>
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='de.gishmo.gwt.sema4g.example.client.Sema4gExample'/>
+  <entry-point class='de.gishmo.gwt.sema4g.example.client.SeMa4gExample'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>

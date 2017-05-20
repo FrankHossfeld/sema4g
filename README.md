@@ -103,8 +103,8 @@ sema4gContext.add(new SyncCommand() {
 ### Type of commands
 SeMa4g knows two types of commands.
 
-#### SyncCommand
-A SyncComannd is a command that contains code which will be executed synchronously. That means, SeMa4g will call the `execute`-method of the cammand and execute the next command.
+#### SyncCommands
+A SyncComannd is a command that contains code which will be executed synchronously. That means, SeMa4g will call the `execute`-method of the command and execute the next command.
 
 Example:
 ```Java
@@ -120,8 +120,8 @@ private SeMa4gCommand createSyncCommand() {
 }
 ```
 
-#### AsyncCommand
-A AsyncCommand is a command that contains asynchronously executed code. In this case you have to use one of SeMa4g callback classes. This callback classes will inform SeMa4g when a server call returns from the server.
+#### AsyncCommands
+A AsyncCommand is a command that contains asynchronously executed code. In this case you have to use one of the SeMa4g callback classes. This callback classes will inform SeMa4g when a server call returns from the server.
 
 Example:
 ```Java
@@ -159,7 +159,7 @@ In case that one AsyncCommad ends in error, SeMa4g stops the excecution, waits f
 In case that all commands finished without errors the `onSuccess`-method of the FinalCommand is called.
 
 #### Execute the context
-To execute te context, you have to build the context by calling the `build`-method and then call the `run`-method.
+To execute the context, you have to build the context by calling the `build`-method and then call the `run`-method.
 
 Example:
 ```Java
@@ -171,7 +171,7 @@ sema4gContext.build()
 #### Conditional commmands
 In case the SeMa4g context is startet by calling the `run`-method, the `execute`-method of all commands will be called. In some cases it might be necessary that one command needs the response of another command. To handle such things, SeMa4g offers the possibility to add depending commands to a command.
 
-If a command depends on another command (or maybe more than one command), the eecution of this command will wait until all depending commands have been successfully finished.
+If a command depends on another command (or maybe more than one command, the execution of this command will wait until all depending commands have been successfully finished.
 
 Example:
 ```Java
@@ -187,7 +187,7 @@ sema4gContext.add(command01)
 ```
 
 #### Manually stop execution
-SeMa4g offers two commands, that will interrupt the execution of a runnung SeMa4gContext.
+SeMa4g offers two commands, that will interrupt the execution of a running SeMa4gContext.
 
 * `signalFisnish()`-method<br/>Calling this method will stop the execution.<br/>* SeMa4g will wait until all running commands has ended<br/>* SeMa4g will not start any new command<br/>* SeMa4g will call the `onSuccess`-mthod of the `FinalCommand`
 

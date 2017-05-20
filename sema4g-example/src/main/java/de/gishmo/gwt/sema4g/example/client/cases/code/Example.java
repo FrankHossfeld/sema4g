@@ -15,20 +15,8 @@
  */
 package de.gishmo.gwt.sema4g.example.client.cases.code;
 
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.Widget;
+import java.lang.annotation.*;
 
-public abstract class AbstractCodeWidget
-  extends Composite {
-
-  public FlowPanel fp = new FlowPanel();
-
-  protected AbstractCodeWidget() {
-    initWidget(fp);
-  }
-
-  public void add(Widget widget) {
-    fp.add(widget);
-  }
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Example {
 }

@@ -13,38 +13,27 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
-/*
- * Copyright 2015 Frank Hossfeld
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package de.gishmo.gwt.sema4g.example.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.user.client.ui.*;
+import de.gishmo.gwt.sema4g.example.client.cases.AbstractCase;
+import de.gishmo.gwt.sema4g.example.client.cases.Case01;
+import de.gishmo.gwt.sema4g.example.client.cases.Case02;
+import de.gishmo.gwt.sema4g.example.client.cases.Case03;
+import de.gishmo.gwt.sema4g.example.client.cases.code.CodeWidget;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class Sema4gExample
+public class SeMa4gExample
   implements EntryPoint {
 
   static {
@@ -52,28 +41,28 @@ public class Sema4gExample
                     .ensureInjected();
   }
 
-  private ExampleStyle    style           = CssResources.CSS.exampleStyle();
-  //  //  private CodeWidget         codeWidgets     = GWT.create(CodeWidget.class);
-  private DockLayoutPanel root            = new DockLayoutPanel(Style.Unit.PX);
-  private FlowPanel       fpSourceListing = new FlowPanel();
-  private FlowPanel       fpDescription   = new FlowPanel();
-  private FlowPanel       fpResult        = new FlowPanel();
-  private PopupPanel      popup           = new PopupPanel();
-  private Button          runButton       = new Button("Run");
-  private Button          resetButton     = new Button("Reset");
-//  private ListBox            lbCases         = new ListBox(false);
-//  private List<AbstractCase> cases           = new ArrayList<>();
-//  private AbstractCase       selectedCase;
+  private ExampleStyle       style           = CssResources.CSS.exampleStyle();
+  private CodeWidget         codeWidgets     = GWT.create(CodeWidget.class);
+  private DockLayoutPanel    root            = new DockLayoutPanel(Style.Unit.PX);
+  private FlowPanel          fpSourceListing = new FlowPanel();
+  private FlowPanel          fpDescription   = new FlowPanel();
+  private FlowPanel          fpResult        = new FlowPanel();
+  private PopupPanel         popup           = new PopupPanel();
+  private Button             runButton       = new Button("Run");
+  private Button             resetButton     = new Button("Reset");
+  private ListBox            lbCases         = new ListBox();
+  private List<AbstractCase> cases           = new ArrayList<>();
+  private AbstractCase selectedCase;
 
   /**
    * This is the entry point method.
    */
   public void onModuleLoad() {
-//    this.createListOfCases();
+    this.createListOfCases();
     this.createPopUp();
     this.bind();
-//
-//    this.setUpCase();
+
+    this.setUpCase();
 
     root.setSize("100%",
                  "100%");
@@ -101,126 +90,57 @@ public class Sema4gExample
 
   private void bind() {
     // bind button
-    resetButton.addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-//        selectedCase.getContext()
-//                    .reset();
-//        clear();
-//        setUpCase();
+    resetButton.addClickHandler((e) -> {
+      clear();
+      setUpCase();
+    });
+
+    runButton.addClickHandler((e) -> {
+      GWT.debugger();
+      if (selectedCase != null) {
+        clear();
+        setUpCase();
+        selectedCase.createContextAndRun();
       }
     });
 
-    runButton.addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-//        if (selectedCase != null) {
-//          try {
-//            selectedCase.getContext()
-//                        .run();
-//          } catch (SeMa4gException e) {
-//            Window.alert("Ups, Panic!!!!!!\n\nmessage ==> " + e.getMessage());
-//          }
-//        }
-      }
+    lbCases.addChangeHandler((e) -> {
+      clear();
+      selectedCase = cases.get(lbCases.getSelectedIndex());
+      setUpCase();
     });
-
-//    lbCases.addChangeHandler(new ChangeHandler() {
-//      @Override
-//      public void onChange(ChangeEvent event) {
-//        clear();
-//        selectedCase = cases.get(lbCases.getSelectedIndex());
-//        setUpCase();
-//      }
-//    });
   }
 
-//  private void createListOfCases() {
-//    Case01 case01 = new Case01(fpResult,
-//                               popup);
-//    cases.add(case01);
-//    lbCases.addItem(case01.getLabelText());
-//
-//
-//    Case02 case02 = new Case02(fpResult,
-//                               popup);
-//    cases.add(case02);
-//    lbCases.addItem(case02.getLabelText());
-//
-//
-//    Case03 case03 = new Case03(fpResult,
-//                               popup);
-//    cases.add(case03);
-//    lbCases.addItem(case03.getLabelText());
-//
-//
-//    lbCases.setSelectedIndex(0);
-//    selectedCase = cases.get(0);
-//  }
-//
-//  private void setUpCase() {
-//    if (selectedCase != null) {
-//      fpDescription.add(createLabel(selectedCase.getDescriptionText()));
-////      fpSourceListing.add(codeWidgets.getWidget(selectedCase.getClass()
-////                                                            .getSimpleName()));
-//    }
-//  }
-//
-//
-//////  private void createTest01() {
-//////    this.createColumn(this.fpOutput01,
-//////                      "Start One",
-//////                      new ClickHandler() {
-//////                        @Override
-//////                        public void onClick(ClickEvent event) {
-//////                          Duration duration = new Duration();
-//////                          fpOutput01.clear();
-//////                          fpOutput01.add(createLabel("Execution for button one started"));
-//////                          setUpButton01(duration);
-//////                        }
-//////                      },
-//////                      "A single service call.");
-//////  }
-//////
-//////  private void createTest02() {
-//////    this.createColumn(this.fpOutput02,
-//////                      "Start Two",
-//////                      new ClickHandler() {
-//////                        @Override
-//////                        public void onClick(ClickEvent event) {
-//////                          Duration duration = new Duration();
-//////                          fpOutput02.clear();
-//////                          fpOutput02.add(createLabel("Execution for button two started"));
-//////                          try {
-//////                            setUpButton02(duration);
-//////                          } catch (SeMa4gException e) {
-//////                            GWT.debugger();
-//////                            fpOutput02.add(createLabel("Execution aborted: " + e.getMessage()));
-//////                          }
-//////                        }
-//////                      },
-//////                      "Several service calls with different duration on the server. No dependencies.");
-//////  }
-//////
-//////  private void createTest03() {
-//////    this.createColumn(this.fpOutput03,
-//////                      "Start Three",
-//////                      new ClickHandler() {
-//////                        @Override
-//////                        public void onClick(ClickEvent event) {
-//////                          Duration duration = new Duration();
-//////                          fpOutput03.clear();
-//////                          fpOutput03.add(createLabel("Execution for button three started"));
-//////                          try {
-//////                            setUpButton03(duration);
-//////                          } catch (SeMa4gException e) {
-//////                            GWT.debugger();
-//////                            fpOutput03.add(createLabel("Execution aborted: " + e.getMessage()));
-//////                          }
-//////                        }
-//////                      },
-//////                      "Several service calls with different duration on the server. With dependencies, but no cycle dependency.");
-//////  }
+  private void createListOfCases() {
+    Case01 case01 = new Case01(fpResult,
+                               popup);
+    cases.add(case01);
+    lbCases.addItem(case01.getLabelText());
+
+
+    Case02 case02 = new Case02(fpResult,
+                               popup);
+    cases.add(case02);
+    lbCases.addItem(case02.getLabelText());
+
+
+    Case03 case03 = new Case03(fpResult,
+                               popup);
+    cases.add(case03);
+    lbCases.addItem(case03.getLabelText());
+
+
+    lbCases.setSelectedIndex(0);
+    selectedCase = cases.get(0);
+  }
+
+  private void setUpCase() {
+    if (selectedCase != null) {
+      fpDescription.add(createLabel(selectedCase.getDescriptionText()));
+      fpSourceListing.add(codeWidgets.getWidget(selectedCase.getClass()
+                                                            .getSimpleName()));
+    }
+  }
 //////
 //////  private void createTest04() {
 //////    this.createColumn(this.fpOutput04,
@@ -280,111 +200,6 @@ public class Sema4gExample
 //////  }
 //////
 //////
-//////  private void setUpButton01(Duration duration) {
-//////    // ExecutionContext
-//////    SeMa4gExecutionContext ctx = SeMa4g.getNewExecutionContext();
-//////
-//////    ctx.addInit(this.initCommand())
-//////       .add(this.createCommand01(fpOutput01))
-//////       .addFinal(this.finalCommand(this.fpOutput01,
-//////                                   "Execution for button one finished",
-//////                                   "Execution for button one failed",
-//////                                   duration));
-//////
-//////    try {
-//////      ctx.run();
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////    }
-//////  }
-//////
-//////
-//////  private void setUpButton02(Duration duration)
-//////      throws SeMa4gException {
-//////    // ExecutionContext
-//////    SeMa4gExecutionContext ctx = SeMa4g.getNewExecutionContext();
-//////
-//////    ctx.addInit(this.initCommand())
-//////       .add(this.createCommand02(fpOutput02))
-//////       .add(this.createCommand06(fpOutput02))
-//////       .add(this.createCommand07(fpOutput02))
-//////       .add(this.createCommand01(fpOutput02))
-//////       .add(this.createCommand04(fpOutput02))
-//////       .add(this.createCommand08(fpOutput02))
-//////       .add(this.createCommand09(fpOutput02))
-//////       .add(this.createCommand03(fpOutput02))
-//////       .add(this.createCommand10(fpOutput02))
-//////       .add(this.createCommand05(fpOutput02))
-//////       .addFinal(this.finalCommand(this.fpOutput02,
-//////                                   "Execution for button two finished",
-//////                                   "Execution for button two failed",
-//////                                   duration));
-//////
-//////    try {
-//////      ctx.run();
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////      throw e;
-//////    }
-//////  }
-//////
-//////
-//////  private void setUpButton03(Duration duration)
-//////      throws SeMa4gException {
-//////    // ExecutionContext
-//////    SeMa4gExecutionContext ctx = SeMa4g.getNewExecutionContext();
-//////
-//////    SeMa4gCommand command01 = this.createCommand01(fpOutput03);
-//////    SeMa4gCommand command02 = this.createCommand02(fpOutput03);
-//////    SeMa4gCommand command03 = this.createCommand03(fpOutput03);
-//////    SeMa4gCommand command04 = this.createCommand04(fpOutput03);
-//////    SeMa4gCommand command05 = this.createCommand05(fpOutput03);
-//////    SeMa4gCommand command06 = this.createCommand06(fpOutput03);
-//////    SeMa4gCommand command07 = this.createCommand07(fpOutput03);
-//////    SeMa4gCommand command08 = this.createCommand08(fpOutput03);
-//////    SeMa4gCommand command09 = this.createCommand09(fpOutput03);
-//////    SeMa4gCommand command10 = this.createCommand10(fpOutput03);
-//////    SeMa4gCommand command11 = this.createCommand11(fpOutput03);
-//////    SeMa4gCommand command12 = this.createCommand12(fpOutput03);
-//////    SeMa4gCommand command14 = this.createCommand14(fpOutput03);
-//////    SeMa4gCommand command15 = this.createCommand15(fpOutput03);
-//////
-//////
-//////    try {
-//////      ctx.addInit(this.initCommand())
-//////         .add(command02.dependingOn(command06))
-//////         .add(command14)
-//////         .add(command06.dependingOn(command04,
-//////                                    command07,
-//////                                    command09))
-//////         .add(command11.dependingOn(command03))
-//////         .add(command01)
-//////         .add(command04.dependingOn(command10))
-//////         .add(command08)
-//////         .add(command15.dependingOn(command14))
-//////         .add(command09)
-//////         .add(command07.dependingOn(command11))
-//////         .add(command05)
-//////         .add(command03.dependingOn(command08,
-//////                                    command05))
-//////         .add(command10)
-//////         .add(command05)
-//////         .add(command12.dependingOn(command02))
-//////         .addFinal(this.finalCommand(this.fpOutput03,
-//////                                     "Execution for button three finished",
-//////                                     "Execution for button three failed",
-//////                                     duration));
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////      throw e;
-//////    }
-//////
-//////    try {
-//////      ctx.run();
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////    }
-//////  }
 //////
 //////
 //////  private void setUpButton04(Duration duration)
@@ -1006,8 +821,8 @@ public class Sema4gExample
     label.addStyleName(style.testLabel());
     fp.add(label);
 
-//    lbCases.addStyleName(style.testCases());
-//    fp.add(lbCases);
+    lbCases.addStyleName(style.testCases());
+    fp.add(lbCases);
 
     runButton.addStyleName(style.testButton());
     fp.add(runButton);
@@ -1086,20 +901,20 @@ public class Sema4gExample
     return fp;
   }
 
-//  private void clear() {
-//    fpSourceListing.clear();
-//    fpDescription.clear();
-//    fpResult.clear();
-//  }
-//
-//  private Label createLabel(String value) {
-//    Label label = new Label(value);
-//    label.getElement()
-//         .getStyle()
-//         .setMargin(4,
-//                    Style.Unit.PX);
-//    return label;
-//  }
+  private void clear() {
+    fpSourceListing.clear();
+    fpDescription.clear();
+    fpResult.clear();
+  }
+
+  private Label createLabel(String value) {
+    Label label = new Label(value);
+    label.getElement()
+         .getStyle()
+         .setMargin(4,
+                    Style.Unit.PX);
+    return label;
+  }
 
   interface CssResources
     extends ClientBundle {
@@ -1135,26 +950,4 @@ public class Sema4gExample
     String testCases();
 
   }
-
-////==============================================================================
-//
-//  @Command(type = Command.CommandType.INIT)
-//  class InitCommand
-//    implements SeMa4gInitCommand {
-//
-//    public void onStart() {
-//
-//    }
-//  }
-//
-//  @Command(type = Command.CommandType.FINAL)
-//  class FinalCommand
-//    implements SeMa4gFinalCommand {
-//
-//    public void onFailure() {
-//    }
-//
-//    public void onSuccess() {
-//    }
-//  }
 }
