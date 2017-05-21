@@ -90,8 +90,8 @@ public class CodeWidgetGenerator
                  null);
       // don't expect this to occur, but could happen if an instance was
       // recently generated but not yet committed
-      new RebindResult(RebindMode.USE_EXISTING,
-                       generatedClassName);
+      return new RebindResult(RebindMode.USE_EXISTING,
+                              packageName + "." + generatedClassName);
     }
 
     List<JClassType> wcsTypes = new ArrayList<>();
@@ -162,11 +162,15 @@ public class CodeWidgetGenerator
                                                   .returns(void.class);
       List<String> sourceCoudeLines = getSourceCodeLines(logger,
                                                          type);
-      createMethod.addStatement("$T fp = new $T()", FlowPanel.class, FlowPanel.class);
+      createMethod.addStatement("$T fp = new $T()",
+                                FlowPanel.class,
+                                FlowPanel.class);
       for (String codeLine : sourceCoudeLines) {
-        createMethod.addStatement("fp.add(super.createLabel($S))", codeLine);
+        createMethod.addStatement("fp.add(super.createLabel($S))",
+                                  codeLine);
       }
-      createMethod.addStatement("code.put($S, fp)", type.getName());
+      createMethod.addStatement("code.put($S, fp)",
+                                type.getName());
       typeSpec.addMethod(createMethod.build());
     }
 
@@ -188,7 +192,7 @@ public class CodeWidgetGenerator
     this.logger.log(TreeLogger.INFO,
                     "Compilation finished in: " + (end.getTime() - start.getTime()) + "ms.");
 
-    return new RebindResult(RebindMode.USE_ALL_NEW_WITH_NO_CACHING,
+    return new RebindResult(RebindMode.USE_ALL_NEW,
                             packageName + "." + generatedClassName);
   }
 
@@ -208,11 +212,12 @@ public class CodeWidgetGenerator
                            .collect(Collectors.toList());
       boolean methodCode = false;
       for (String s : linesOdCode) {
-        if (s.contains(  "public void createContextAndRun() {")) {
+        if (s.contains("public void createContextAndRun() {")) {
           methodCode = true;
         }
         if (methodCode) {
-          methodCodeLines.add(s.replace(" ", "&nbsp;"));
+          methodCodeLines.add(s.replace(" ",
+                                        "&nbsp;"));
         }
         if (s.startsWith("  }")) {
           methodCode = false;
