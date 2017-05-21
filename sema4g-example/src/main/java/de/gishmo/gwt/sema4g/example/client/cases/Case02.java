@@ -20,13 +20,11 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import de.gishmo.gwt.sema4g.client.SeMa4g;
 import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
-import de.gishmo.gwt.sema4g.example.client.cases.code.IsExampleCase;
 import de.gishmo.gwt.sema4g.example.client.cases.code.Example;
 
 @Example
 public class Case02
-  extends AbstractCase
-  implements IsExampleCase {
+  extends AbstractCase {
 
   public Case02(FlowPanel fp,
                 PopupPanel popup) {

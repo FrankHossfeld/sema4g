@@ -22,12 +22,10 @@ import de.gishmo.gwt.sema4g.client.SeMa4g;
 import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
 import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
 import de.gishmo.gwt.sema4g.example.client.cases.code.Example;
-import de.gishmo.gwt.sema4g.example.client.cases.code.IsExampleCase;
 
 @Example
 public class Case03
-  extends AbstractCase
-  implements IsExampleCase {
+  extends AbstractCase {
 
   public Case03(FlowPanel fp,
                 PopupPanel popup) {
