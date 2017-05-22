@@ -10,6 +10,7 @@ target
 .classpath
 .project
 .settings
+.gradle
 .DS_Store
 src/it/*/bin/
 src/it/*/tomcat/
@@ -21,3 +22,9 @@ classes
 /war
 /www-test
 sema4g-example/src/main/webapp/SeMa4gExample
+gradlew
+gradlew.bat
+/dist
+/gradle
+/*/build
+/*/.gradle

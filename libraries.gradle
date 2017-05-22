@@ -1,0 +1,16 @@
+ext {
+    gwtVersion      = '2.8.1'
+    junitVersion    = '4.12'
+    restyGwtVersion = "2.2.0"
+}
+
+ext.libs = [
+        gwtUser              : "com.google.gwt:gwt-user:${gwtVersion}",
+        gwtCodeserver        : "com.google.gwt:gwt-codeserver:${gwtVersion}",
+        gwtDev               : "com.google.gwt:gwt-dev:${gwtVersion}",
+        gwtServlet           : "com.google.gwt:gwt-servlet:${gwtVersion}",
+
+        junit                : "junit:junit:${junitVersion}",
+
+        restyGWT             : "org.fusesource.restygwt:restygwt:${restyGwtVersion}"
+]

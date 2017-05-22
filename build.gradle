@@ -1,0 +1,84 @@
+group 'de.gishmo.gwt'
+version '1.5.2'
+
+buildscript {
+    // delete dist directory
+    delete "dist"
+    allprojects {
+        repositories {
+            mavenCentral()
+            mavenLocal()
+//        maven {
+//            url artifactoryUrl
+//            credentials {
+//                username artifactoryUser
+//                password artifactoryPassword
+//            }
+//        }
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+//    options.compilerArgs << '-implicit:none'
+//    // kompakt-Option Java 8:
+//    // forums.gradle.org/gradle/topics/how_can_i_specify_a_compact_jre_as_of_java_8_with_my_gradle_builds
+//    // options.compilerArgs << '-profile:compact1'
+    options.encoding = 'UTF-8'
+//    // GWT: enable incremental compilation
+//    options.incremental = true
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    apply from: '../libraries.gradle'
+
+//    jar {
+//        from('src/main/java') {
+//            include '**/*.gwt.xml'
+//        }
+//    }
+
+//    plugins.withType(de.richsource.gradle.plugins.gwt.GwtBasePlugin) {
+//        subProject.task('cleanGwtBaseLocalCache', type:Delete)  {
+//            doLast {
+//                deleteGWTCaches()
+//            }
+//        }
+//    }
+//
+//    plugins.withType(de.richsource.gradle.plugins.gwt.GwtPlugin) {
+//        subProject.task('cleanGwtLocalCache', type:Delete)  {
+//            doLast {
+//                deleteGWTCaches()
+//            }
+//        }
+//
+//        gwtDev.dependsOn cleanGwtLocalCache
+//        gwtDev.dependsOn cleanGwtBaseLocalCache
+//
+//        tasks.whenTaskAdded { task ->
+//            if (task.name == 'gwtSuperDev') {
+//                task.dependsOn cleanGwtLocalCache
+//                task.dependsOn cleanGwtBaseLocalCache
+//            }
+//        }
+//    }
+
+//    jar {
+//        from('src/main/java') {
+//            include '**/*.gwt.xml'
+//        }
+//    }
+}

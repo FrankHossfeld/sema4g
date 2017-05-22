@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Implementation-Title: SeMa4g
+Implementation-Version: 1.5.2
+

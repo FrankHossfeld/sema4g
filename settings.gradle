@@ -1,0 +1,8 @@
+rootProject.name = 'sema4g-parent'
+
+include 'sema4g',
+        'sema4g-requestbuilder',
+        'sema4g-resty',
+        'sema4g-rpc'
+
+

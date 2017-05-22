@@ -1,0 +1,39 @@
+group 'de.gishmo.gwt'
+version '1.5.2'
+description = "SeMa4g"
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile(libs.gwtUser,
+            libs.gwtDev)
+
+    testCompile(libs.junit)
+}
+
+jar {
+    from sourceSets.main.java
+    include('**/*.*')
+    manifest {
+        attributes('Implementation-Title': 'SeMa4g',
+                   'Implementation-Version': version)
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+task copyJar(type: Copy) {
+    from jar // here it automatically reads jar file produced from jar task
+    into '../dist'
+}
+build.dependsOn copyJar
