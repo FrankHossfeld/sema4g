@@ -6,8 +6,8 @@ buildscript {
     delete "dist"
     allprojects {
         repositories {
-            mavenCentral()
             mavenLocal()
+            mavenCentral()
 //        maven {
 //            url artifactoryUrl
 //            credentials {
