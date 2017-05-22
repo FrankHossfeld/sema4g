@@ -21,10 +21,7 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.user.client.ui.*;
-import de.gishmo.gwt.sema4g.example.client.cases.AbstractCase;
-import de.gishmo.gwt.sema4g.example.client.cases.Case01;
-import de.gishmo.gwt.sema4g.example.client.cases.Case02;
-import de.gishmo.gwt.sema4g.example.client.cases.Case03;
+import de.gishmo.gwt.sema4g.example.client.cases.*;
 import de.gishmo.gwt.sema4g.example.client.cases.code.CodeWidget;
 
 import java.util.ArrayList;
@@ -128,6 +125,18 @@ public class SeMa4gExample
                                popup);
     cases.add(case03);
     lbCases.addItem(case03.getLabelText());
+
+
+    Case04 case04 = new Case04(fpResult,
+                               popup);
+    cases.add(case04);
+    lbCases.addItem(case04.getLabelText());
+
+
+    Case05 case05 = new Case05(fpResult,
+                               popup);
+    cases.add(case05);
+    lbCases.addItem(case05.getLabelText());
 
 
     lbCases.setSelectedIndex(0);
