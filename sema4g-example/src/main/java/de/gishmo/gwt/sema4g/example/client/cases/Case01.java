@@ -31,8 +31,14 @@ public class Case01
     super(fp,
           popup);
 
-    buttonText = "Start One";
-    descriptionText = "A single service call with a InitCommand and a FinishCommand.";
+    descriptionText = "A single service call with a InitCommand and a FinishCommand.<br><br>" +
+                      "<ul>" +
+                      "<li>service 'one': the waiting duration on the server is: 2500 ms.</li>" +
+                      "</ul>" +
+                      "The context will successfully end!" +
+                      AbstractCase.SERVICE_DESCRIPTION +
+                      AbstractCase.INITCOMMAND_DESCRIPTION +
+                      AbstractCase.FINALCOMMAND_DESCRIPTION;
     labelText = "Test Case 01";
     startText = "Execution for test case one started";
     successText = "Execution for case one finished";

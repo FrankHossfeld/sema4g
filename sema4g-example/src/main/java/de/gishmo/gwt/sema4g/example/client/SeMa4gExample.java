@@ -139,353 +139,29 @@ public class SeMa4gExample
     lbCases.addItem(case05.getLabelText());
 
 
+    Case06 case06 = new Case06(fpResult,
+                               popup);
+    cases.add(case06);
+    lbCases.addItem(case06.getLabelText());
+
+
+    Case07 case07 = new Case07(fpResult,
+                               popup);
+    cases.add(case07);
+    lbCases.addItem(case07.getLabelText());
+
+
     lbCases.setSelectedIndex(0);
     selectedCase = cases.get(0);
   }
 
   private void setUpCase() {
     if (selectedCase != null) {
-      fpDescription.add(createLabel(selectedCase.getDescriptionText()));
+      fpDescription.add(createHtml(selectedCase.getDescriptionText()));
       fpSourceListing.add(codeWidgets.getWidget(selectedCase.getClass()
                                                             .getSimpleName()));
     }
   }
-
-//////  private void createTest06() {
-//////    this.createColumn(this.fpOutput06,
-//////                      "Start Six",
-//////                      new ClickHandler() {
-//////                        @Override
-//////                        public void onClick(ClickEvent event) {
-//////                          Duration duration = new Duration();
-//////                          fpOutput06.clear();
-//////                          fpOutput06.add(createLabel("Execution for button six started"));
-//////                          try {
-//////                            setUpButton06(duration);
-//////                          } catch (SeMa4gException e) {
-//////                            fpOutput06.add(createLabel("Execution aborted: " + e.getMessage()));
-//////                          }
-//////                        }
-//////                      },
-//////                      "Several service calls with different duration on the server. One service (service no. 13) will fail and throw an exception.");
-//////  }
-//////
-//////
-//////
-//////
-//////
-//////
-//////  private void setUpButton06(Duration duration)
-//////      throws SeMa4gException {
-//////    // ExecutionContext
-//////    SeMa4gExecutionContext ctx = SeMa4g.getNewExecutionContext();
-//////
-//////    SeMa4gCommand command01 = this.createCommand01(fpOutput06);
-//////    SeMa4gCommand command02 = this.createCommand02(fpOutput06);
-//////    SeMa4gCommand command03 = this.createCommand03(fpOutput06);
-//////    SeMa4gCommand command04 = this.createCommand04(fpOutput06);
-//////    SeMa4gCommand command05 = this.createCommand05(fpOutput06);
-//////    SeMa4gCommand command06 = this.createCommand06(fpOutput06);
-//////    SeMa4gCommand command07 = this.createCommand07(fpOutput06);
-//////    SeMa4gCommand command08 = this.createCommand08(fpOutput06);
-//////    SeMa4gCommand command09 = this.createCommand09(fpOutput06);
-//////    SeMa4gCommand command10 = this.createCommand10(fpOutput06);
-//////    SeMa4gCommand command13 = this.createCommand13(fpOutput06);
-//////
-//////
-//////    try {
-//////      ctx.addInit(this.initCommand())
-//////         .add(command02.dependingOn(command06))
-//////         .add(command06.dependingOn(command08,
-//////                                    command13,
-//////                                    command09))
-//////         .add(command07)
-//////         .add(command01)
-//////         .add(command04.dependingOn(command02))
-//////         .add(command08)
-//////         .add(command09)
-//////         .add(command13)
-//////         .add(command03.dependingOn(command08,
-//////                                    command05))
-//////         .add(command10)
-//////         .add(command05)
-//////         .addFinal(this.finalCommand(this.fpOutput06,
-//////                                     "Execution for button six finished",
-//////                                     "Execution for button six failed",
-//////                                     duration));
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////      throw e;
-//////    }
-//////
-//////    try {
-//////      ctx.run();
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////    }
-//////  }
-//////
-////////------------------------------------------------------------------------------
-//////
-//////  private InitCommand initCommand() {
-//////    return new InitCommand() {
-//////      @Override
-//////      public void onStart() {
-//////        popup.center();
-//////      }
-//////    };
-//////  }
-//////
-//////  private FinalCommand finalCommand(final FlowPanel fp,
-//////                                    final String successMessage,
-//////                                    final String errorMessage,
-//////                                    final Duration duration) {
-//////    return new FinalCommand() {
-//////      @Override
-//////      public void onSuccess() {
-//////        popup.hide();
-//////        fp.add(createLabel(successMessage));
-//////        fp.add(createLabel("Exection Time: " + Integer.toString(duration.elapsedMillis()) + " ms."));
-//////      }
-//////
-//////      @Override
-//////      public void onFailure() {
-//////        popup.hide();
-//////        fp.add(createLabel(errorMessage));
-//////        fp.add(createLabel("Exection Time: " + Integer.toString(duration.elapsedMillis()) + " ms."));
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand01(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service01.callServer(1250,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service One failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service one");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand02(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service02.callServer(4250,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service two failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service two");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand03(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service03.callServer(1750,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service three failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service three");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand04(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service04.callServer(6250,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service four failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service four");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand05(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service05.callServer(12050,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service five failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service five");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand06(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service06.callServer(275,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service six failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service six");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand07(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service07.callServer(2450,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service Seven failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service seven");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand08(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service08.callServer(3800,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service Eight failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service eight");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand09(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service09.callServer(5350,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service Nine failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service nine");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
-//////
-//////  private SeMa4gCommand createCommand10(final FlowPanel fp) {
-//////    return new SeMa4gRcpCommand() {
-//////      @Override
-//////      public void execute() {
-//////        service10.callServer(3250,
-//////                             new SeMa4gAsyncCallbackProxy<AsyncCallback<String>, String>(this,
-//////                                                                                         new AsyncCallback<String>() {
-//////                                                                                           @Override
-//////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: service Ten failure"));
-//////                                                                                           }
-//////
-//////                                                                                           @Override
-//////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
-//////                                                                                             GWT.log("success service ten");
-//////                                                                                           }
-//////                                                                                         })
-//////        );
-//////      }
-//////    };
-//////  }
 //////
 //////  private SeMa4gCommand createCommand11(final FlowPanel fp) {
 //////    return new SeMa4gSyncCommand() {
@@ -497,7 +173,7 @@ public class SeMa4gExample
 //////          }
 //////        };
 //////        timer.schedule(1250);
-//////        fp.add(createLabel("Service Eleven (synchron) returned after 1250 ms"));
+//////        fp.add(createHtml("Service Eleven (synchron) returned after 1250 ms"));
 //////      }
 //////    };
 //////  }
@@ -512,7 +188,7 @@ public class SeMa4gExample
 //////          }
 //////        };
 //////        timer.schedule(1250);
-//////        fp.add(createLabel("Service Twelve (synchron) returned after 1250 ms"));
+//////        fp.add(createHtml("Service Twelve (synchron) returned after 1250 ms"));
 //////      }
 //////    };
 //////  }
@@ -526,12 +202,12 @@ public class SeMa4gExample
 //////                                                                                         new AsyncCallback<String>() {
 //////                                                                                           @Override
 //////                                                                                           public void onFailure(Throwable caught) {
-//////                                                                                             fp.add(createLabel("Ups: Service Thirteen failure"));
+//////                                                                                             fp.add(createHtml("Ups: Service Thirteen failure"));
 //////                                                                                           }
 //////
 //////                                                                                           @Override
 //////                                                                                           public void onSuccess(String result) {
-//////                                                                                             fp.add(createLabel(result));
+//////                                                                                             fp.add(createHtml(result));
 //////                                                                                             GWT.log("success service thirteen");
 //////                                                                                           }
 //////                                                                                         })
@@ -557,22 +233,22 @@ public class SeMa4gExample
 //////                                                                               new RequestCallback() {
 //////                                                                                 public void onError(Request request,
 //////                                                                                                     Throwable exception) {
-//////                                                                                   fp.add(createLabel("Ups: Service Fourteen failure"));
+//////                                                                                   fp.add(createHtml("Ups: Service Fourteen failure"));
 //////                                                                                 }
 //////
 //////                                                                                 public void onResponseReceived(Request request,
 //////                                                                                                                Response response) {
 //////                                                                                   if (200 == response.getStatusCode()) {
 //////                                                                                     Message message = deserializeMessageFromJSON(response.getText());
-//////                                                                                     fp.add(createLabel(message.getMessage()));
+//////                                                                                     fp.add(createHtml(message.getMessage()));
 //////                                                                                     GWT.log("success service fourteen");
 //////                                                                                   } else {
-//////                                                                                     fp.add(createLabel("Ups: Service Fourteen failure"));
+//////                                                                                     fp.add(createHtml("Ups: Service Fourteen failure"));
 //////                                                                                   }
 //////                                                                                 }
 //////                                                                               }));
 //////        } catch (RequestException e) {
-//////          fp.add(createLabel("Ups: Service Fourteen failure"));
+//////          fp.add(createHtml("Ups: Service Fourteen failure"));
 //////        }
 //////      }
 //////    };
@@ -595,22 +271,22 @@ public class SeMa4gExample
 //////                                                                               new RequestCallback() {
 //////                                                                                 public void onError(Request request,
 //////                                                                                                     Throwable exception) {
-//////                                                                                   fp.add(createLabel("Ups: Service Fifteen failure"));
+//////                                                                                   fp.add(createHtml("Ups: Service Fifteen failure"));
 //////                                                                                 }
 //////
 //////                                                                                 public void onResponseReceived(Request request,
 //////                                                                                                                Response response) {
 //////                                                                                   if (200 == response.getStatusCode()) {
 //////                                                                                     String message = response.getText();
-//////                                                                                     fp.add(createLabel(message));
+//////                                                                                     fp.add(createHtml(message));
 //////                                                                                     GWT.log("success service Fifteen");
 //////                                                                                   } else {
-//////                                                                                     fp.add(createLabel("Ups: Service Fifteen failure"));
+//////                                                                                     fp.add(createHtml("Ups: Service Fifteen failure"));
 //////                                                                                   }
 //////                                                                                 }
 //////                                                                               }));
 //////        } catch (RequestException e) {
-//////          fp.add(createLabel("Ups: Service Fifteen failure"));
+//////          fp.add(createHtml("Ups: Service Fifteen failure"));
 //////        }
 //////      }
 //////    };
@@ -809,13 +485,13 @@ public class SeMa4gExample
     fpResult.clear();
   }
 
-  private Label createLabel(String value) {
-    Label label = new Label(value);
-    label.getElement()
+  private HTML createHtml(String value) {
+    HTML html = new HTML(value);
+    html.getElement()
          .getStyle()
          .setMargin(4,
                     Style.Unit.PX);
-    return label;
+    return html;
   }
 
   interface CssResources

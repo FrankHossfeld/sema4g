@@ -21,10 +21,7 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
-import de.gishmo.gwt.sema4g.client.command.AsyncCommand;
-import de.gishmo.gwt.sema4g.client.command.FinalCommand;
-import de.gishmo.gwt.sema4g.client.command.InitCommand;
-import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
+import de.gishmo.gwt.sema4g.client.command.*;
 import de.gishmo.gwt.sema4g.example.client.service.RpcFailingServiceAsync;
 import de.gishmo.gwt.sema4g.example.client.service.RpcServiceAsync;
 import de.gishmo.gwt.sema4g.rpc.client.command.proxy.AsyncCallbackProxy;
@@ -33,20 +30,24 @@ public abstract class AbstractCase {
 //
 //  private static final String JSON_URL    = GWT.getModuleBaseURL() + "jsonMessage?";
 //  private static final String REQUEST_URL = GWT.getModuleBaseURL() + "message?";
-//
+
+  final static String FINALCOMMAND_DESCRIPTION        = "<br><br>The FinalCommand will close the popup and show a JavaScript alert depending on the server responses. If at least one command ends in error, the context will also ends in error.";
+  final static String INITCOMMAND_DESCRIPTION         = "<br><br>The InitCommand will open a popup.";
+  final static String SERVICE_DESCRIPTION             = "<br><br>The createAsyncCommand-method has two parameters. The first parameter is the name of the command and the second parameter is the duration, the server will wait.";
+  final static String SERVICE_FAILURE_DESCRIPTION     = "<br><br>The createAsyncFailureCommand-method has two parameters. The first parameter is the name of the command and the second parameter is the duration, the server will wait. This service will throw an exception on the sercer side";
+  final static String SERVICE_SYNCHRONOUS_DESCRIPTION = "<br><br>The createSyncCommand-method has two parameters. The first parameter is the name of the command and the second parameter is the duration, the client will wait. This service does not call the server!";
+
   /**
    * Create a remote service proxy to talk to the server-side Greeting service.
    */
   private final RpcServiceAsync        service01 = RpcServiceAsync.Util.getInstance();
   private final RpcFailingServiceAsync service02 = RpcFailingServiceAsync.Util.getInstance();
-  //  String           headline;
-  String    labelText;
-  String    descriptionText;
-  String    buttonText;
-  String    startText;
-  String    successText;
-  String    errorText;
-  FlowPanel fp;
+  String     labelText;
+  String     descriptionText;
+  String     startText;
+  String     successText;
+  String     errorText;
+  FlowPanel  fp;
   PopupPanel popup;
   //  private MyBeanFactory myBeanFactory = GWT.create(MyBeanFactory.class);
   private Duration duration;
@@ -163,47 +164,13 @@ public abstract class AbstractCase {
 //      }
 //    };
 //  }
-//
-//
-//
-//  /**
-//   * Creates an instance of an {@link SeMa4gSyncCommand} command with a Timer, to simulate some actions.
-//   * <br><br>
-//   * The command will call a RPC service on the service which waits
-//   * the number of milliseconds before returning to the client
-//   *
-//   * @param waitTime number of milliseconds the server waits before returning ot the client
-//   * @param name identifier of the service
-//   * @return instance of FinalCommand
-//   */
-//  Command createSyncCommand(final long waitTime,
-//                                  final String name) {
-//    return new SeMa4gSyncCommand() {
-//      @Override
-//      public void execute() {
-//        Timer timer = new Timer() {
-//          public void run() {
-//            GWT.log("Ready - synchron");
-//          }
-//        };
-//        timer.schedule(1250);
-//        fp.add(createLabel("Service " + name + " (synchron) returned after " + Long.toString(waitTime) + " ms"));
-//      }
-//    };
-//  }
-//
-//  /**
-//   * end of sourcecode widgets *
-//   */
-
-//------------------------------------------------------------------------------
 
   private Label executionTime() {
     return createLabel("Exection Time: " + Integer.toString(duration.elapsedMillis()) + " ms.");
   }
 
   /**
-   * Creates an instance of an {@link SeMa4gCommand} command.
+   * Creates an instance of an {@link AsyncCommand} command.
    * <br><br>
    * The command will call a RPC service on the service which waits
    * the number of milliseconds before returning to the client
@@ -237,7 +204,7 @@ public abstract class AbstractCase {
   }
 
   /**
-   * Creates an instance of an {@link SeMa4gCommand} command.
+   * Creates an instance of an {@link AsyncCommand} command.
    * <br><br>
    * The command will call a RPC service on the service which waits
    * the number of milliseconds before returning to the client
@@ -266,6 +233,21 @@ public abstract class AbstractCase {
                                  GWT.log("Ups: service " + name + " successful executed .. That's what we not expected.");
                                }
                              });
+      }
+    };
+  }
+
+  /**
+   * Creates an instance of an {@link SyncCommand} command with a Timer, to simulate some actions.
+   *
+   * @param name     identifier of the service
+   * @return instance of FinalCommand
+   */
+  SeMa4gCommand createSyncCommand(final String name) {
+    return new SyncCommand() {
+      @Override
+      public void execute() {
+        fp.add(createLabel("Service " + name + " (synchron) returned"));
       }
     };
   }

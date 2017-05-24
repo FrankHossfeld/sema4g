@@ -32,8 +32,23 @@ public class Case04
     super(fp,
           popup);
 
-    buttonText = "Start Foue";
-    descriptionText = "Several service calls with different duration on the server. With cycle dependencies, exception expected. No service will be called.";
+    descriptionText = "Several service calls with different duration on the server. With cycle dependencies, exception expected. No service will be called." +
+                      "<ul>" +
+                      "<li>service 'one': the waiting duration on the server is: 9250 ms.</li>" +
+                      "<li>service 'two': the waiting duration on the server is: 3255 ms. The service depends on the execution of service 'six'.</li>" +
+                      "<li>service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'eight' and 'five'.</li>" +
+                      "<li>service 'four': the waiting duration on the server is: 52000 ms. The service depends on the execution of service 'two'.</li>" +
+                      "<li>service 'five': the waiting duration on the server is: 250 ms.</li>" +
+                      "<li>service 'six': the waiting duration on the server is: 6000 ms. The service depends on the execution of service 'four', 'seven' and 'nine'.<br><b>This command has a cycle dependency!</b></li>" +
+                      "<li>service 'seven': the waiting duration on the server is: 7250 ms.</li>" +
+                      "<li>service 'eight': the waiting duration on the server is: 2400 ms.</li>" +
+                      "<li>service 'nine': the waiting duration on the server is: 5100 ms.</li>" +
+                      "<li>service 'ten': the waiting duration on the server is: 200 ms.</li>" +
+                      "</ul>" +
+                      "The context will not be executed because aof a cycle dependency!" +
+                      AbstractCase.SERVICE_DESCRIPTION +
+                      AbstractCase.INITCOMMAND_DESCRIPTION +
+                      AbstractCase.FINALCOMMAND_DESCRIPTION;
     labelText = "Test Case 04";
     startText = "Execution for test case four started";
     successText = "Execution for case four finished";
@@ -66,19 +81,19 @@ public class Case04
       SeMa4g.builder()
             .addInitCommand(super.createInitCommand())
             .addFinalCommand(super.createFinalCommand())
-            .add(command02.dependingOn(command06))
-            .add(command06.dependingOn(command04,
-                                    command07,
-                                    command09))
-            .add(command07)
             .add(command01)
+            .add(command02.dependingOn(command06))
+            .add(command03.dependingOn(command08,
+                                       command05))
             .add(command04.dependingOn(command02))
+            .add(command05)
+            .add(command06.dependingOn(command04,
+                                       command07,
+                                       command09))
+            .add(command07)
             .add(command08)
             .add(command09)
-            .add(command03.dependingOn(command08,
-                                    command05))
             .add(command10)
-            .add(command05)
 
             .build()
             .run();
