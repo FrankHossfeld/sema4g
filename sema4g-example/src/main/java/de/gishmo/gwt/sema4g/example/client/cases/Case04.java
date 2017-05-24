@@ -15,8 +15,8 @@
  */
 package de.gishmo.gwt.sema4g.example.client.cases;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import de.gishmo.gwt.sema4g.client.SeMa4g;
 import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
@@ -24,35 +24,35 @@ import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
 import de.gishmo.gwt.sema4g.example.client.cases.code.Example;
 
 @Example
-public class Case03
+public class Case04
   extends AbstractCase {
 
-  public Case03(FlowPanel fp,
+  public Case04(FlowPanel fp,
                 PopupPanel popup) {
     super(fp,
           popup);
 
-    descriptionText = "Several service calls with a InitCommand and a FinishCommand and dependencies." +
+    descriptionText = "Several service calls with different duration on the server. With cycle dependencies, exception expected. No service will be called." +
                       "<ul>" +
-                      "<li>service 'one': the waiting duration on the server is: 9250 ms. The service depends on the execution of service 'three' and 'ten'.</li>" +
-                      "<li>service 'two': the waiting duration on the server is: 3255 ms.</li>" +
-                      "<li>service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'five'.</li>" +
-                      "<li>service 'four': the waiting duration on the server is: 52000 ms. The service depends on the execution of service 'five'.</li>" +
-                      "<li>service 'five': the waiting duration on the server is: 250 ms. The service depends on the execution of service 'eight' and 'nine'.</li>" +
-                      "<li>service 'six': the waiting duration on the server is: 6000 ms.</li>" +
+                      "<li>service 'one': the waiting duration on the server is: 9250 ms.</li>" +
+                      "<li>service 'two': the waiting duration on the server is: 3255 ms. The service depends on the execution of service 'six'.</li>" +
+                      "<li>service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'eight' and 'five'.</li>" +
+                      "<li>service 'four': the waiting duration on the server is: 52000 ms. The service depends on the execution of service 'two'.</li>" +
+                      "<li>service 'five': the waiting duration on the server is: 250 ms.</li>" +
+                      "<li>service 'six': the waiting duration on the server is: 6000 ms. The service depends on the execution of service 'four', 'seven' and 'nine'.<br><b>This command has a cycle dependency!</b></li>" +
                       "<li>service 'seven': the waiting duration on the server is: 7250 ms.</li>" +
                       "<li>service 'eight': the waiting duration on the server is: 2400 ms.</li>" +
                       "<li>service 'nine': the waiting duration on the server is: 5100 ms.</li>" +
                       "<li>service 'ten': the waiting duration on the server is: 200 ms.</li>" +
                       "</ul>" +
-                      "The context will successfully end!" +
+                      "The context will not be executed because aof a cycle dependency!" +
                       AbstractCase.SERVICE_DESCRIPTION +
                       AbstractCase.INITCOMMAND_DESCRIPTION +
                       AbstractCase.FINALCOMMAND_DESCRIPTION;
-    labelText = "Test Case 03";
-    startText = "Execution for test case three started";
-    successText = "Execution for case three finished";
-    errorText = "Execution for case three failed";
+    labelText = "Test Case 04";
+    startText = "Execution for test case four started";
+    successText = "Execution for case four finished";
+    errorText = "Execution has detected a cycle dependency";
   }
 
   public void createContextAndRun() {
@@ -81,22 +81,24 @@ public class Case03
       SeMa4g.builder()
             .addInitCommand(super.createInitCommand())
             .addFinalCommand(super.createFinalCommand())
-            .add(command01.dependingOn(command03,
-                                       command10))
-            .add(command02)
-            .add(command03.dependingOn(command05))
-            .add(command04.dependingOn(command05))
-            .add(command05.dependingOn(command08,
+            .add(command01)
+            .add(command02.dependingOn(command06))
+            .add(command03.dependingOn(command08,
+                                       command05))
+            .add(command04.dependingOn(command02))
+            .add(command05)
+            .add(command06.dependingOn(command04,
+                                       command07,
                                        command09))
-            .add(command06)
             .add(command07)
             .add(command08)
             .add(command09)
             .add(command10)
+
             .build()
             .run();
     } catch (SeMa4gException e) {
-      Window.alert("Panic!");
+      fp.add(new Label("SeMa4g has detected a cycle dependency. A exception is thrown and the context is not started!"));
     }
   }
 }

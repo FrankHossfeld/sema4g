@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>sema4g-rpc</artifactId>
-  <packaging>gwt-lib</packaging>
+  <packaging>jar</packaging>
   <description>Provide SeMa4g-Support for GWT RPC</description>
 
   <properties>
@@ -54,6 +54,27 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/client/**</include>
+          <include>**/rebind/**</include>
+          <include>**/processor/**</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/client/**</include>
+          <include>**/shared/**</include>
+          <include>**/*.gwt.xml</include>
+          <include>**/*.html</include>
+          <include>**/public/**</include>
+        </includes>
+      </resource>
+    </resources>
+
     <plugins>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -61,14 +82,14 @@
           <skipTests>true</skipTests>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>net.ltgt.gwt.maven</groupId>
-        <artifactId>gwt-maven-plugin</artifactId>
-        <version>1.0-rc-6</version>
-        <configuration>
-          <moduleName>de.gishmo.de.gishmo.mvp4g2.Mvp4g2</moduleName>
-        </configuration>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>net.ltgt.gwt.maven</groupId>-->
+        <!--<artifactId>gwt-maven-plugin</artifactId>-->
+        <!--<version>1.0-rc-6</version>-->
+        <!--<configuration>-->
+          <!--<moduleName>de.gishmo.de.gishmo.mvp4g2.Mvp4g2</moduleName>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

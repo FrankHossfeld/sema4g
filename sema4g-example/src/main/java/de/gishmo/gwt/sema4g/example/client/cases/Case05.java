@@ -19,55 +19,58 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import de.gishmo.gwt.sema4g.client.SeMa4g;
+import de.gishmo.gwt.sema4g.client.command.FinalCommand;
+import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
 import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
 import de.gishmo.gwt.sema4g.example.client.cases.code.Example;
 
 @Example
-public class Case02
+public class Case05
   extends AbstractCase {
 
-  public Case02(FlowPanel fp,
+  public Case05(FlowPanel fp,
                 PopupPanel popup) {
     super(fp,
           popup);
 
-    descriptionText = "Several service calls with no dependencies and a InitCommand and a FinishCommand."+
+    descriptionText = "A single service call (service no. 13) which will fail and throw an exception." +
                       "<ul>" +
                       "<li>service 'one': the waiting duration on the server is: 2500 ms.</li>" +
-                      "<li>service 'two': the waiting duration on the server is: 125 ms.</li>" +
-                      "<li>service 'three': the waiting duration on the server is: 1250 0ms.</li>" +
-                      "<li>service 'four': the waiting duration on the server is: 8750 ms.</li>" +
-                      "<li>service 'five': the waiting duration on the server is: 125 ms.</li>" +
                       "</ul>" +
-                      "The context will successfully end!" +
-                      AbstractCase.SERVICE_DESCRIPTION +
+                      "The context will end in error because of a server exception!" +
+                      AbstractCase.SERVICE_FAILURE_DESCRIPTION +
                       AbstractCase.INITCOMMAND_DESCRIPTION +
                       AbstractCase.FINALCOMMAND_DESCRIPTION;
-    labelText = "Test Case 02";
-    startText = "Execution for test case two started";
-    successText = "Execution for case two finished";
-    errorText = "Execution for case two failed";
+    labelText = "Test Case 05";
+    startText = "Execution for test case five started";
+    successText = "Execution for case five finished";
+    errorText = "Execution for case five failed";
   }
 
   public void createContextAndRun() {
+    SeMa4gCommand command = this.createAsyncFailingCommandRPC(9250,
+                                                              "thirteen");
+
     try {
       SeMa4g.builder()
             .addInitCommand(super.createInitCommand())
-            .addFinalCommand(super.createFinalCommand())
-            .add(this.createAsyncCommandRPC(2500,
-                                            "one"))
-            .add(this.createAsyncCommandRPC(125,
-                                            "two"))
-            .add(this.createAsyncCommandRPC(12500,
-                                            "three"))
-            .add(this.createAsyncCommandRPC(8750,
-                                            "four"))
-            .add(this.createAsyncCommandRPC(125,
-                                            "five"))
+            .addFinalCommand(new FinalCommand() {
+              @Override
+              public void onSuccess() {
+                popup.hide();
+                Window.alert("Ups, seeing this means ... something is wrong!");
+              }
+              @Override
+              public void onFailure() {
+                popup.hide();
+                Window.alert("Fine, that's what we expected ... ");
+              }
+            })
+            .add(command)
             .build()
             .run();
     } catch (SeMa4gException e) {
-      Window.alert("Panic!");
+      Window.alert("panic!!!!");
     }
   }
 }

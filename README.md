@@ -245,6 +245,7 @@ private SeMa4gCommand createAsyncCommand01() {
                                       Throwable caught) {
           // Enter here the code, that will
           // be executed in case of failure
+          // ended with an error
         }
 
         @Override
@@ -252,12 +253,13 @@ private SeMa4gCommand createAsyncCommand01() {
                                       String response) {
           // Enter here the code, that will
           // be executed in case of success
-        }
+          // ended without error
+       }
       };
 
       @Override
       public void execute() {
-        // That's the place for the server call ...
+        // That's the place to do the server call ...
         greetingService.greet(name, proxy);
       }
     };
@@ -273,19 +275,21 @@ private SeMa4gCommand createAsyncCommand02() {
                                       Throwable caught) {
           // Enter here the code, that will
           // be executed in case of failure
-        }
+           // ended with an error
+       }
 
         @Override
         protected void onProxySuccess(Method method,
                                       String response) {
           // Enter here the code, that will
           // be executed in case of success
+          // ended without error
         }
       };
 
       @Override
       public void execute() {
-        // That's the place for the server call ...
+        // That's the place to do the server call ...
         greetingService.greet(name, proxy);
       }
     };
@@ -301,19 +305,21 @@ private SeMa4gCommand createAsyncCommand02() {
                                       Throwable caught) {
           // Enter here the code, that will
           // be executed in case of failure
-        }
+          // ended with an error
+       }
 
         @Override
         protected void onProxySuccess(Method method,
                                       String response) {
           // Enter here the code, that will
           // be executed in case of success
+          // ended without error
         }
       };
 
       @Override
       public void execute() {
-        // That's the place for the server call ...
+        // That's the place to do the server call ...
         greetingService.greet(name, proxy);
       }
     };
@@ -331,6 +337,23 @@ Use the "Clone or download" button at the top right of this page to get the sour
     <version>LATEST</version>
 </dependency>
 ```
+
+## Example
+SeMa4g provides an example to show some common use cases.
+
+To run the example run:
+```
+mvn install
+```
+from the parent pom to install SeMa4g in your local repository (as long as SeMa4g is not provided via Maven Central.)
+
+To run the example web application, run
+```
+mvn gwt:devmode
+```
+from the pom inside the sema4g-example directory.
+
+In case the web applicaiton is running, select a test and press the 'Run'-Button.
 
 ## License
 The MIT License (MIT)
