@@ -47,9 +47,9 @@ public abstract class AbstractCase {
   String    successText;
   String    errorText;
   FlowPanel fp;
+  PopupPanel popup;
   //  private MyBeanFactory myBeanFactory = GWT.create(MyBeanFactory.class);
-  private Duration   duration;
-  private PopupPanel popup;
+  private Duration duration;
 
   AbstractCase(FlowPanel fp,
                PopupPanel popup) {
@@ -247,7 +247,7 @@ public abstract class AbstractCase {
    * @return instance of FinalCommand
    */
   SeMa4gCommand createAsyncFailingCommandRPC(final long waitTime,
-                                      final String name) {
+                                             final String name) {
     return new AsyncCommand() {
       @Override
       public void execute() {
