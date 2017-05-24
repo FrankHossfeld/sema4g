@@ -21,6 +21,7 @@
   </modules>
 
   <inceptionYear>2017</inceptionYear>
+  
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -115,36 +116,7 @@
             <additionalparam>-Xdoclint:none</additionalparam>
           </configuration>
         </plugin>
-        <!--<plugin>-->
-        <!--<groupId>net.ltgt.gwt.maven</groupId>-->
-        <!--<artifactId>gwt-maven-plugin</artifactId>-->
-        <!--<inherited>false</inherited>-->
-        <!--</plugin>-->
-
-        <!--<plugin>-->
-        <!--<groupId>org.codehaus.mojo</groupId>-->
-        <!--<artifactId>gwt-maven-plugin</artifactId>-->
-        <!--<inherited>false</inherited>-->
-        <!--</plugin>-->
       </plugins>
     </pluginManagement>
-
-    <!--<plugins>-->
-    <!--<plugin>-->
-    <!--<groupId>net.ltgt.gwt.maven</groupId>-->
-    <!--<artifactId>gwt-maven-plugin</artifactId>-->
-    <!--<inherited>false</inherited>-->
-    <!--</plugin>-->
-    <!--<plugin>-->
-    <!--<groupId>org.apache.maven.plugins</groupId>-->
-    <!--<artifactId>maven-release-plugin</artifactId>-->
-    <!--<version>2.5.3</version>-->
-    <!--<configuration>-->
-    <!--<autoVersionSubmodules>true</autoVersionSubmodules>-->
-    <!--<developmentVersion>HEAD-SNAPSHOT</developmentVersion>-->
-    <!--<tagNameFormat>v@{project.version}</tagNameFormat>-->
-    <!--</configuration>-->
-    <!--</plugin>-->
-    <!--</plugins>-->
   </build>
 </project>
