@@ -353,6 +353,8 @@ mvn gwt:devmode
 ```
 from the pom inside the sema4g-example directory.
 
+In case the web applicaiton is running, select a test and press the 'Run'-Button.
+
 ## License
 The MIT License (MIT)
 
