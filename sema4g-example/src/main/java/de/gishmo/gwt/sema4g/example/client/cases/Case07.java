@@ -19,51 +19,50 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import de.gishmo.gwt.sema4g.client.SeMa4g;
+import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
 import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
 import de.gishmo.gwt.sema4g.example.client.cases.code.Example;
 
 @Example
-public class Case02
+public class Case07
   extends AbstractCase {
 
-  public Case02(FlowPanel fp,
+  public Case07(FlowPanel fp,
                 PopupPanel popup) {
     super(fp,
           popup);
 
-    descriptionText = "Several service calls with no dependencies and a InitCommand and a FinishCommand."+
+    descriptionText = "Several asynchronous and one synchronous service calls with a InitCommand and a FinishCommand and dependencies." +
                       "<ul>" +
-                      "<li>service 'one': the waiting duration on the server is: 2500 ms.</li>" +
-                      "<li>service 'two': the waiting duration on the server is: 125 ms.</li>" +
-                      "<li>service 'three': the waiting duration on the server is: 1250 0ms.</li>" +
-                      "<li>service 'four': the waiting duration on the server is: 8750 ms.</li>" +
-                      "<li>service 'five': the waiting duration on the server is: 125 ms.</li>" +
+                      "<li>service 'one': the waiting duration on the server is: 9250 ms.</li>" +
+                      "<li>service 'two': the waiting duration on the server is: 12000 ms.<br><b>This is a synchronous command</b></li>" +
+                      "<li>service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'two'.</li>" +
                       "</ul>" +
                       "The context will successfully end!" +
                       AbstractCase.SERVICE_DESCRIPTION +
+                      AbstractCase.SERVICE_SYNCHRONOUS_DESCRIPTION +
                       AbstractCase.INITCOMMAND_DESCRIPTION +
                       AbstractCase.FINALCOMMAND_DESCRIPTION;
-    labelText = "Test Case 02";
-    startText = "Execution for test case two started";
-    successText = "Execution for case two finished";
-    errorText = "Execution for case two failed";
+    labelText = "Test Case 07";
+    startText = "Execution for test case seven started";
+    successText = "Execution for case seven finished";
+    errorText = "Execution for case seven failed";
   }
 
   public void createContextAndRun() {
+    SeMa4gCommand command01 = this.createAsyncCommandRPC(9250,
+                                                         "one");
+    SeMa4gCommand command02 = this.createSyncCommand("two");
+    SeMa4gCommand command03 = this.createAsyncCommandRPC(125,
+                                                         "three");
+
     try {
       SeMa4g.builder()
             .addInitCommand(super.createInitCommand())
             .addFinalCommand(super.createFinalCommand())
-            .add(this.createAsyncCommandRPC(2500,
-                                            "one"))
-            .add(this.createAsyncCommandRPC(125,
-                                            "two"))
-            .add(this.createAsyncCommandRPC(12500,
-                                            "three"))
-            .add(this.createAsyncCommandRPC(8750,
-                                            "four"))
-            .add(this.createAsyncCommandRPC(125,
-                                            "five"))
+            .add(command01)
+            .add(command02)
+            .add(command03.dependingOn(command02))
             .build()
             .run();
     } catch (SeMa4gException e) {

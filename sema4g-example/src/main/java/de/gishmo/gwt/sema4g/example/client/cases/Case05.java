@@ -33,8 +33,14 @@ public class Case05
     super(fp,
           popup);
 
-    buttonText = "Start Foue";
-    descriptionText = "A single service call (service no. 13) which will fail and throw an exception.";
+    descriptionText = "A single service call (service no. 13) which will fail and throw an exception." +
+                      "<ul>" +
+                      "<li>service 'one': the waiting duration on the server is: 2500 ms.</li>" +
+                      "</ul>" +
+                      "The context will end in error because of a server exception!" +
+                      AbstractCase.SERVICE_FAILURE_DESCRIPTION +
+                      AbstractCase.INITCOMMAND_DESCRIPTION +
+                      AbstractCase.FINALCOMMAND_DESCRIPTION;
     labelText = "Test Case 05";
     startText = "Execution for test case five started";
     successText = "Execution for case five finished";
