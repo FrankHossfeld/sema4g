@@ -27,7 +27,7 @@
   </parent>
 
   <artifactId>sema4g</artifactId>
-  <packaging>gwt-lib</packaging>
+  <packaging>jar</packaging>
   <description>Managing asynchronous calls in GWT</description>
 
   <dependencies>
@@ -80,7 +80,7 @@
         <artifactId>gwt-maven-plugin</artifactId>
         <version>1.0-rc-6</version>
         <configuration>
-          <moduleName>de.gishmo.de.gishmo.mvp4g2.Mvp4g2</moduleName>
+          <moduleName>de.gishmo.gwt.sema4g.SeMa4g</moduleName>
         </configuration>
       </plugin>
       <plugin>

@@ -21,10 +21,7 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.user.client.ui.*;
-import de.gishmo.gwt.sema4g.example.client.cases.AbstractCase;
-import de.gishmo.gwt.sema4g.example.client.cases.Case01;
-import de.gishmo.gwt.sema4g.example.client.cases.Case02;
-import de.gishmo.gwt.sema4g.example.client.cases.Case03;
+import de.gishmo.gwt.sema4g.example.client.cases.*;
 import de.gishmo.gwt.sema4g.example.client.cases.code.CodeWidget;
 
 import java.util.ArrayList;
@@ -130,6 +127,18 @@ public class SeMa4gExample
     lbCases.addItem(case03.getLabelText());
 
 
+    Case04 case04 = new Case04(fpResult,
+                               popup);
+    cases.add(case04);
+    lbCases.addItem(case04.getLabelText());
+
+
+    Case05 case05 = new Case05(fpResult,
+                               popup);
+    cases.add(case05);
+    lbCases.addItem(case05.getLabelText());
+
+
     lbCases.setSelectedIndex(0);
     selectedCase = cases.get(0);
   }
@@ -141,45 +150,7 @@ public class SeMa4gExample
                                                             .getSimpleName()));
     }
   }
-//////
-//////  private void createTest04() {
-//////    this.createColumn(this.fpOutput04,
-//////                      "Start Four",
-//////                      new ClickHandler() {
-//////                        @Override
-//////                        public void onClick(ClickEvent event) {
-//////                          Duration duration = new Duration();
-//////                          fpOutput04.clear();
-//////                          fpOutput04.add(createLabel("Execution for button four started"));
-//////                          try {
-//////                            setUpButton04(duration);
-//////                          } catch (SeMa4gException e) {
-//////                            fpOutput04.add(createLabel("Execution aborted: " + e.getMessage()));
-//////                          }
-//////                        }
-//////                      },
-//////                      "Several service calls with different duration on the server. With cycle dependencies, exception expected. No service will be called.");
-//////  }
-//////
-//////  private void createTest05() {
-//////    this.createColumn(this.fpOutput05,
-//////                      "Start Five",
-//////                      new ClickHandler() {
-//////                        @Override
-//////                        public void onClick(ClickEvent event) {
-//////                          Duration duration = new Duration();
-//////                          fpOutput05.clear();
-//////                          fpOutput05.add(createLabel("Execution for button five started"));
-//////                          try {
-//////                            setUpButton05(duration);
-//////                          } catch (SeMa4gException e) {
-//////                            fpOutput05.add(createLabel("Execution aborted: " + e.getMessage()));
-//////                          }
-//////                        }
-//////                      },
-//////                      "A single service call (service no. 13) which will fail and throw an exception.");
-//////  }
-//////
+
 //////  private void createTest06() {
 //////    this.createColumn(this.fpOutput06,
 //////                      "Start Six",
@@ -202,75 +173,6 @@ public class SeMa4gExample
 //////
 //////
 //////
-//////  private void setUpButton04(Duration duration)
-//////      throws SeMa4gException {
-//////    // ExecutionContext
-//////    SeMa4gExecutionContext ctx = SeMa4g.getNewExecutionContext();
-//////
-//////    SeMa4gCommand command01 = this.createCommand01(fpOutput04);
-//////    SeMa4gCommand command02 = this.createCommand02(fpOutput04);
-//////    SeMa4gCommand command03 = this.createCommand03(fpOutput04);
-//////    SeMa4gCommand command04 = this.createCommand04(fpOutput04);
-//////    SeMa4gCommand command05 = this.createCommand05(fpOutput04);
-//////    SeMa4gCommand command06 = this.createCommand06(fpOutput04);
-//////    SeMa4gCommand command07 = this.createCommand07(fpOutput04);
-//////    SeMa4gCommand command08 = this.createCommand08(fpOutput04);
-//////    SeMa4gCommand command09 = this.createCommand09(fpOutput04);
-//////    SeMa4gCommand command10 = this.createCommand10(fpOutput04);
-//////
-//////
-//////    try {
-//////      ctx.addInit(this.initCommand())
-//////         .add(command02.dependingOn(command06))
-//////         .add(command06.dependingOn(command04,
-//////                                    command07,
-//////                                    command09))
-//////         .add(command07)
-//////         .add(command01)
-//////         .add(command04.dependingOn(command02))
-//////         .add(command08)
-//////         .add(command09)
-//////         .add(command03.dependingOn(command08,
-//////                                    command05))
-//////         .add(command10)
-//////         .add(command05)
-//////         .addFinal(this.finalCommand(this.fpOutput04,
-//////                                     "Execution for button four finished",
-//////                                     "Execution for button four failed",
-//////                                     duration));
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////      throw e;
-//////    }
-//////
-//////    try {
-//////      ctx.run();
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////    }
-//////  }
-//////
-//////
-//////  private void setUpButton05(Duration duration)
-//////      throws SeMa4gException {
-//////    // ExecutionContext
-//////    SeMa4gExecutionContext ctx = SeMa4g.getNewExecutionContext();
-//////
-//////    SeMa4gCommand command13 = this.createCommand13(fpOutput05);
-//////
-//////    ctx.addInit(this.initCommand())
-//////       .add(command13)
-//////       .addFinal(this.finalCommand(this.fpOutput05,
-//////                                   "Execution for button five finished",
-//////                                   "Execution for button five failed",
-//////                                   duration));
-//////
-//////    try {
-//////      ctx.run();
-//////    } catch (SeMa4gException e) {
-//////      e.printStackTrace();
-//////    }
-//////  }
 //////
 //////
 //////  private void setUpButton06(Duration duration)
@@ -840,19 +742,19 @@ public class SeMa4gExample
     FlowPanel fpLeft = new FlowPanel();
     fpLeft.addStyleName(style.floatingLeft());
     fpLeft.addStyleName(style.container());
-    fpLeft.setSize("612px",
+    fpLeft.setSize("512px",
                    "100%");
     fp.add(fpLeft);
 
     FlowPanel fpRight = new FlowPanel();
     fpRight.addStyleName(style.floatingLeft());
     fpRight.addStyleName(style.container());
-    fpRight.setSize("612px",
+    fpRight.setSize("512px",
                     "100%");
     fp.add(fpRight);
 
     DockLayoutPanel leftPanel = new DockLayoutPanel(Style.Unit.PX);
-    leftPanel.setSize("612px",
+    leftPanel.setSize("512px",
                       "100%");
     fpLeft.add(leftPanel);
 
@@ -863,13 +765,13 @@ public class SeMa4gExample
 
     ScrollPanel spLeft = new ScrollPanel();
     spLeft.addStyleName(style.border());
-    spLeft.setSize("598px",
+    spLeft.setSize("498px",
                    "770px");
     leftPanel.add(spLeft);
     spLeft.add(fpSourceListing);
 
     DockLayoutPanel rightPanel = new DockLayoutPanel(Style.Unit.PX);
-    rightPanel.setSize("612px",
+    rightPanel.setSize("512px",
                        "100%");
     fpRight.add(rightPanel);
 
@@ -880,7 +782,7 @@ public class SeMa4gExample
 
     ScrollPanel spRightTop = new ScrollPanel();
     spRightTop.addStyleName(style.border());
-    spRightTop.setSize("598px",
+    spRightTop.setSize("498px",
                        "175px");
     rightPanel.addNorth(spRightTop,
                         188);
@@ -893,7 +795,7 @@ public class SeMa4gExample
 
     ScrollPanel spRightBottom = new ScrollPanel();
     spRightBottom.addStyleName(style.border());
-    spRightBottom.setSize("598px",
+    spRightBottom.setSize("498px",
                           "550px");
     rightPanel.add(spRightBottom);
     spRightBottom.add(fpResult);

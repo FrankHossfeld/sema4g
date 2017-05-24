@@ -6,19 +6,12 @@
 
 
   <groupId>de.gishmo.gwt</groupId>
-  <artifactId>sema4g-parent</artifactId>
+  <artifactId>parent</artifactId>
   <version>1.5.2</version>
   <packaging>pom</packaging>
   <name>SeMa4g parent</name>
   <description>Managing asynchronous calls in GWT</description>
   <url>https://github.com/frankhossfeld/sema4g</url>
-
-  <modules>
-    <module>sema4g-client</module>
-    <module>sema4g-resty</module>
-    <module>sema4g-rpc</module>
-    <module>sema4g-requestbuilder</module>
-  </modules>
 
   <inceptionYear>2017</inceptionYear>
   <licenses>

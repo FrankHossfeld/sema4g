@@ -25,12 +25,18 @@
     <servlet-name>RpcService</servlet-name>
     <servlet-class>de.gishmo.gwt.sema4g.example.server.RpcServiceImpl</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>RpcService</servlet-name>
-    <url-pattern>/Sema4gExample/rpcService</url-pattern>
+    <url-pattern>/SeMa4gExample/rpcService</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <servlet-name>RpcFailingService</servlet-name>
+    <servlet-class>de.gishmo.gwt.sema4g.example.server.RpcFailingServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RpcFailingService</servlet-name>
+    <url-pattern>/SeMa4gExample/rpcFailingService</url-pattern>
+  </servlet-mapping>
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>SeMa4gExample.html</welcome-file>

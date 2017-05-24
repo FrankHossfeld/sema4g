@@ -25,6 +25,7 @@ import de.gishmo.gwt.sema4g.client.command.AsyncCommand;
 import de.gishmo.gwt.sema4g.client.command.FinalCommand;
 import de.gishmo.gwt.sema4g.client.command.InitCommand;
 import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
+import de.gishmo.gwt.sema4g.example.client.service.RpcFailingServiceAsync;
 import de.gishmo.gwt.sema4g.example.client.service.RpcServiceAsync;
 import de.gishmo.gwt.sema4g.rpc.client.command.proxy.AsyncCallbackProxy;
 
@@ -36,18 +37,19 @@ public abstract class AbstractCase {
   /**
    * Create a remote service proxy to talk to the server-side Greeting service.
    */
-  private final RpcServiceAsync service01 = RpcServiceAsync.Util.getInstance();
-//  String           headline;
-  String           labelText;
-  String           descriptionText;
-  String           buttonText;
-  String           startText;
-  String           successText;
-  String           errorText;
-//  private MyBeanFactory myBeanFactory = GWT.create(MyBeanFactory.class);
-  private Duration   duration;
-  private FlowPanel  fp;
-  private PopupPanel popup;
+  private final RpcServiceAsync        service01 = RpcServiceAsync.Util.getInstance();
+  private final RpcFailingServiceAsync service02 = RpcFailingServiceAsync.Util.getInstance();
+  //  String           headline;
+  String    labelText;
+  String    descriptionText;
+  String    buttonText;
+  String    startText;
+  String    successText;
+  String    errorText;
+  FlowPanel fp;
+  PopupPanel popup;
+  //  private MyBeanFactory myBeanFactory = GWT.create(MyBeanFactory.class);
+  private Duration duration;
 
   AbstractCase(FlowPanel fp,
                PopupPanel popup) {
@@ -55,11 +57,7 @@ public abstract class AbstractCase {
     this.popup = popup;
   }
 
-//------------------------------------------------------------------------------
-
   public abstract void createContextAndRun();
-
-//--------------------------------------------------------------------
 
   public String getDescriptionText() {
     return descriptionText;
@@ -68,18 +66,6 @@ public abstract class AbstractCase {
   public String getLabelText() {
     return labelText;
   }
-
-//  public String getButtonText() {
-//    return buttonText;
-//  }
-//
-//  public void run()
-//    throws SeMa4gException {
-//    duration = new Duration();
-//    context.run();
-//  }
-
-//------------------------------------------------------------------------------
 
   /**
    * Creates an instance of an {@link InitCommand} to use in a Example.
@@ -118,38 +104,13 @@ public abstract class AbstractCase {
     };
   }
 
-  /**
-   * Creates an instance of an {@link SeMa4gCommand} command.
-   * <br><br>
-   * The command will call a RPC service on the service which waits
-   * the number of milliseconds before returning to the client
-   *
-   * @param waitTime number of milliseconds the server waits before returning ot the client
-   * @param name identifier of the service
-   * @return instance of FinalCommand
-   */
-  SeMa4gCommand createAsyncCommandRPC(final long waitTime,
-                                      final String name) {
-    return new AsyncCommand() {
-      @Override
-      public void execute() {
-        fp.add(createLabel("Service (RPC) " + name + " started"));
-        service01.callServer(waitTime,
-                             name,
-                             new AsyncCallbackProxy<String>(this) {
-                               @Override
-                               protected void onProxyFailure(Throwable caught) {
-                                 fp.add(createLabel("Ups: service " + name + " failure"));
-                               }
-
-                               @Override
-                               protected void onProxySuccess(String result) {
-                                 fp.add(createLabel(result));
-                                 GWT.log("service " + name + " successful executed");
-                               }
-                             });
-      }
-    };
+  private Label createLabel(String value) {
+    Label label = new Label(value);
+    label.getElement()
+         .getStyle()
+         .setMargin(4,
+                    Style.Unit.PX);
+    return label;
   }
 
 
@@ -237,17 +198,76 @@ public abstract class AbstractCase {
 
 //------------------------------------------------------------------------------
 
-  private Label createLabel(String value) {
-    Label label = new Label(value);
-    label.getElement()
-         .getStyle()
-         .setMargin(4,
-                    Style.Unit.PX);
-    return label;
-  }
-
   private Label executionTime() {
     return createLabel("Exection Time: " + Integer.toString(duration.elapsedMillis()) + " ms.");
+  }
+
+  /**
+   * Creates an instance of an {@link SeMa4gCommand} command.
+   * <br><br>
+   * The command will call a RPC service on the service which waits
+   * the number of milliseconds before returning to the client
+   *
+   * @param waitTime number of milliseconds the server waits before returning ot the client
+   * @param name     identifier of the service
+   * @return instance of FinalCommand
+   */
+  SeMa4gCommand createAsyncCommandRPC(final long waitTime,
+                                      final String name) {
+    return new AsyncCommand() {
+      @Override
+      public void execute() {
+        fp.add(createLabel("Service (RPC) " + name + " started"));
+        service01.callServer(waitTime,
+                             name,
+                             new AsyncCallbackProxy<String>(this) {
+                               @Override
+                               protected void onProxyFailure(Throwable caught) {
+                                 fp.add(createLabel("Ups: service " + name + " failure"));
+                               }
+
+                               @Override
+                               protected void onProxySuccess(String result) {
+                                 fp.add(createLabel(result));
+                                 GWT.log("service " + name + " successful executed");
+                               }
+                             });
+      }
+    };
+  }
+
+  /**
+   * Creates an instance of an {@link SeMa4gCommand} command.
+   * <br><br>
+   * The command will call a RPC service on the service which waits
+   * the number of milliseconds before returning to the client
+   *
+   * @param waitTime number of milliseconds the server waits before returning ot the client
+   * @param name     identifier of the service
+   * @return instance of FinalCommand
+   */
+  SeMa4gCommand createAsyncFailingCommandRPC(final long waitTime,
+                                             final String name) {
+    return new AsyncCommand() {
+      @Override
+      public void execute() {
+        fp.add(createLabel("Service (RPC - Failure) " + name + " started"));
+        service02.callServer(waitTime,
+                             name,
+                             new AsyncCallbackProxy<String>(this) {
+                               @Override
+                               protected void onProxyFailure(Throwable caught) {
+                                 fp.add(createLabel("Yeah: service " + name + " failure"));
+                               }
+
+                               @Override
+                               protected void onProxySuccess(String result) {
+                                 fp.add(createLabel(result));
+                                 GWT.log("Ups: service " + name + " successful executed .. That's what we not expected.");
+                               }
+                             });
+      }
+    };
   }
 
 //------------------------------------------------------------------------------
