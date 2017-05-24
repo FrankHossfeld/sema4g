@@ -4,9 +4,9 @@
 
 A light-weighted framework to manage asynchronous calls in GWT.
 
-In many cases it is neccessary to do several server calls before a GWT application starts or a view can be displayed. sema4g will help you to get this calls managed. 
+In many cases it is neccessary to do several server calls, before a GWT application starts or a view can be displayed. SeMa4g will help you to get this calls managed.
 
-The idea of SeMa4g is to use a callback proxy. The asyncronized server call will use the callback classes for SeMa4g. This allows SeMa4g to get informed if a server call has finished.
+The idea of SeMa4g is to use a callback proxy. The asyncronized server call will use the callback classes of SeMa4g. This allows SeMa4g to get informed if a server call has finished.
 
 ## Features
 * init commands: commands, that will be executed on start
@@ -159,7 +159,7 @@ In case that one AsyncCommad ends in error, SeMa4g stops the excecution, waits f
 In case that all commands finished without errors the `onSuccess`-method of the FinalCommand is called.
 
 #### Execute the context
-To execute the context, you have to build the context by calling the `build`-method and then call the `run`-method.
+To execute the context, you have to build the context by calling the `build`-method and then call the `run`-method to run the context.
 
 Example:
 ```Java
@@ -169,13 +169,13 @@ sema4gContext.build()
 
 
 #### Conditional commmands
-In case the SeMa4g context is startet by calling the `run`-method, the `execute`-method of all commands will be called. In some cases it might be necessary that one command needs the response of another command. To handle such things, SeMa4g offers the possibility to add depending commands to a command.
+In case the SeMa4g context is started by calling the `run`-method, the `execute`-method of all commands will be called. In some cases it might be necessary that one command needs the response of another command. To handle such things, SeMa4g offers the possibility to add depending commands to a command.
 
-If a command depends on another command (or maybe more than one command, the execution of this command will wait until all depending commands have been successfully finished.
+If a command depends on another command (or maybe more than one command), the execution of this command will wait until all depending commands have been successfully finished.
 
 Example:
 ```Java
-// the execution of comand03 will stsrt, wenn command01 and command02
+// the execution of comand03 will stsrt, in case that command01 and command02
 // successfully finished.
 SeMa4gCommand command01 = createAsyncCommand01();
 SeMa4gCommand command02 = createAsyncCommand02();
@@ -197,7 +197,7 @@ SeMa4g offers two commands, that will interrupt the execution of a running SeMa4
 #### Complex example
 ```Java
 private void doServerCalls() {
-  // the execution of comand03 will stsrt, wenn command01 and command02
+  // the execution of comand03 will stsrt, in case that command01 and command02
   // successfully finished.
   SeMa4gCommand command01 = createAsyncCommand01();
   SeMa4gCommand command02 = createAsyncCommand02();
