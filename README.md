@@ -367,7 +367,7 @@ from the pom inside the sema4g-example directory.
 In case the web applicaiton is running, select a test and press the 'Run'-Button.
 
 ### Test case 03
-![Flow Test Case 03](/etc/graphics/TestCase03-44.png)
+![Flow Test Case 03](https://github.com/sema4g/etc/graphics/TestCase03-44.png)
 
 ## License
 The MIT License (MIT)
