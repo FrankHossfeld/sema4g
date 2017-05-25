@@ -85,7 +85,7 @@ sema4gContext.addFinalCommand(new FinalCommand() {
                                       // ended with an error
                                     });
 ```
-It is possible to add more then one ```FinalCommand``` command to the SeMa4g context.
+It is possible to add more then one ```FinalCommand``` command to the SeMa4g context. At least you need to add one ```FinalCommand```.
 
 ### Create a command and add it to the SeMa4g context
 Adding a command to the SeMa4g context is quite easy:
@@ -190,9 +190,9 @@ Executing the context will:
 * execute all commonds
 * execute all FinalCommands
 
-To clearify:
+That means:
 * First all InitCommands will be executed.
-* After all InitCommands are executed, all commands which have no dependencies to other commands will be started. When a preconditioned command has finish, the depending command will started (in case there is no other precondition of a command that has not finished yet). If a command ends in error, preconditioned commands which has not been started, will not be executed!
+* After all InitCommands are executed, all commands which have no dependencies to other commands will be started. When a preconditioned command has finish, the depending command will start (in case there is no other precondition command that has not finished yet). If a command ends in error, preconditioned commands which have not been started, will not be executed!
 * After all commands have finished, all FinalCommands will be executed. If one or more commands ended in error, the onFailure-method will be executed. In case that no command ended in error, the onSuccess-method will be executed.
 
 The order of executions of the InitCommands and FinalCommands is not defined!
@@ -341,7 +341,7 @@ private SeMa4gCommand createAsyncCommand02() {
 ## Downloading
 Use the "Clone or download" button at the top right of this page to get the source. You can get a pre-built JAR (usable in JRE 1.7 or later) from Sonatype (in progress), download the jar form [here](https://github.com/FrankHossfeld/sema4g/releases) , or add the following Maven Central dependency:
 
-```
+```XML
 <dependency>
     <groupId>de.gishmo.gwt</groupId>
     <artifactId>sema4g</artifactId>
@@ -352,13 +352,13 @@ Use the "Clone or download" button at the top right of this page to get the sour
 ## Example
 SeMa4g provides an example to show some common use cases.
 
-To run the example run:
+To run the example use:
 ```
 mvn install
 ```
-from the parent pom to install SeMa4g in your local repository (as long as SeMa4g is not provided via Maven Central.)
+from the pom to install SeMa4g in your local repository (as long as SeMa4g is not provided via Maven Central.)
 
-To run the example web application, run
+To run the example web application, use
 ```
 mvn gwt:devmode
 ```
