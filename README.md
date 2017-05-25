@@ -85,7 +85,7 @@ sema4gContext.addFinalCommand(new FinalCommand() {
                                       // ended with an error
                                     });
 ```
-SeMa4g allows only one `FinalCommanmd` adding to the SeMa4g context.
+It is possible to add more then one ```FinalCommand``` command to the SeMa4g context.
 
 ### Create a command and add it to the SeMa4g context
 Adding a command to the SeMa4g context is quite easy:
@@ -158,16 +158,6 @@ In case that one AsyncCommad ends in error, SeMa4g stops the excecution, waits f
 
 In case that all commands finished without errors the `onSuccess`-method of the FinalCommand is called.
 
-#### Execute the context
-To execute the context, you have to build the context by calling the `build`-method and then call the `run`-method to run the context.
-
-Example:
-```Java
-sema4gContext.build()
-             .run();
-```
-
-
 #### Conditional commmands
 In case the SeMa4g context is started by calling the `run`-method, the `execute`-method of all commands will be called. In some cases it might be necessary that one command needs the response of another command. To handle such things, SeMa4g offers the possibility to add depending commands to a command.
 
@@ -185,6 +175,27 @@ sema4gContext.add(command01)
              .add(command02)
              .add(command03.dependingOn(command01, command02);
 ```
+
+#### Execute the context
+To execute the context, you have to build the context by calling the `build`-method and then call the `run`-method to run the context.
+
+Example:
+```Java
+sema4gContext.build()
+             .run();
+```
+#### Order of Execution
+Executing the context will:
+* execute all InitCommands
+* execute all commonds
+* execute all FinalCommands
+
+To clearify:
+* First all InitCommands will be executed.
+* After all InitCommands are executed, all commands which have no dependencies to other commands will be started. When a preconditioned command has finish, the depending command will started (in case there is no other precondition of a command that has not finished yet). If a command ends in error, preconditioned commands which has not been started, will not be executed!
+* After all commands have finished, all FinalCommands will be executed. If one or more commands ended in error, the onFailure-method will be executed. In case that no command ended in error, the onSuccess-method will be executed.
+
+The order of executions of the InitCommands and FinalCommands is not defined!
 
 #### Manually stop execution
 SeMa4g offers two commands, that will interrupt the execution of a running SeMa4gContext.

@@ -67,14 +67,6 @@
           <skipTests>true</skipTests>
         </configuration>
       </plugin>
-      <!--<plugin>-->
-        <!--<groupId>net.ltgt.gwt.maven</groupId>-->
-        <!--<artifactId>gwt-maven-plugin</artifactId>-->
-        <!--<version>1.0-rc-6</version>-->
-        <!--<configuration>-->
-          <!--<moduleName>de.gishmo.de.gishmo.mvp4g2.Mvp4g2</moduleName>-->
-        <!--</configuration>-->
-      <!--</plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

@@ -13,10 +13,6 @@
   <packaging>jar</packaging>
   <description>Provide SeMa4g-Support for GWT RPC</description>
 
-  <properties>
-    <restyGWT.version>2.2.0</restyGWT.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.google.gwt</groupId>
@@ -31,26 +27,11 @@
       <artifactId>sema4g</artifactId>
       <version>${project.version}</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.google.code.findbugs</groupId>-->
-    <!--<artifactId>jsr305</artifactId>-->
-    <!--<version>3.0.0</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>com.google.testing.compile</groupId>-->
-    <!--<artifactId>compile-testing</artifactId>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.mockito</groupId>-->
-    <!--<artifactId>mockito-core</artifactId>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
   </dependencies>
 
   <build>
@@ -82,21 +63,9 @@
           <skipTests>true</skipTests>
         </configuration>
       </plugin>
-      <!--<plugin>-->
-        <!--<groupId>net.ltgt.gwt.maven</groupId>-->
-        <!--<artifactId>gwt-maven-plugin</artifactId>-->
-        <!--<version>1.0-rc-6</version>-->
-        <!--<configuration>-->
-          <!--<moduleName>de.gishmo.de.gishmo.mvp4g2.Mvp4g2</moduleName>-->
-        <!--</configuration>-->
-      <!--</plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
       </plugin>
     </plugins>
   </build>
