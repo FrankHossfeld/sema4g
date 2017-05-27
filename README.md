@@ -105,6 +105,7 @@ SeMa4g knows two types of commands.
 
 #### SyncCommands
 A SyncComannd is a command that contains code which will be executed synchronously. That means, SeMa4g will call the `execute`-method of the command and execute the next command.
+**Do not implement server actions in this command!**
 
 Example:
 ```Java
@@ -373,6 +374,8 @@ For all test cases:
 * The InitCommand will open a popup.
 * The FinalCommand will close the popup and show a JavaScript alert depending on the server responses. If at least one command ends in error, the context will also ends in error.
 * The createAsyncCommand-method creates a server call. It has two parameters. The first parameter is the name of the command and the second parameter is the duration, the server will wait. This method will look different for your calls.
+* The createAsyncFailureCommand-method has two parameters. The first parameter is the name of the command and the second parameter is the duration, the server will wait. This service will throw an exception on the server side.
+* The createSyncCommand-method has two parameters. The first parameter is the name of the command and the second parameter is the duration, the client will wait. This service does not call the server!
 
 #### Test Case 01
 
@@ -400,6 +403,7 @@ The context will successfully end!
 
 
 #### Test Case 03
+
 Several service calls with a InitCommand and a FinishCommand and dependencies.
 
 * service 'one': the waiting duration on the server is: 9250 ms. The service depends on the execution of service 'three' and 'ten'.
@@ -416,6 +420,47 @@ Several service calls with a InitCommand and a FinishCommand and dependencies.
 The context will end successfully.
 
 ![Flow Test Case 03](https://github.com/FrankHossfeld/sema4g/blob/master/etc/graphics/TestaCase03-100.png)
+
+#### Test Case 04
+
+Several service calls with different duration on the server. This test case chows the behaviour in case of a cycle dependencies. Exception expected. **No service will be called**.
+
+#### Test Case 05
+
+A single service call (service no. 13) which will fail and throw an exception.
+
+* service 'one': the waiting duration on the server is: 2500 ms.
+
+The context will end in error because of a server exception!
+
+#### Test Case 06
+
+Several service calls with a InitCommand and a FinishCommand and dependencies. One service (service no. 13) will fail and throw an exception.
+
+* service 'one': the waiting duration on the server is: 9250 ms.
+* service 'two': the waiting duration on the server is: 3255 ms. The service depends on the execution of service 'six'.
+* service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'five' and 'eight'.
+* service 'four': the waiting duration on the server is: 52000 ms. The service depends on the execution of service 'two'.
+* service 'five': the waiting duration on the server is: 250 ms.
+* service 'six': the waiting duration on the server is: 6000 ms. The service depends on the execution of service 'eight', 'nine' and 'thirteen'. **This command will not be executed due to an erroe in command 'thirteen'**.
+* service 'seven': the waiting duration on the server is: 7250 ms.
+* service 'eight': the waiting duration on the server is: 2400 ms.
+* service 'nine': the waiting duration on the server is: 5100 ms.
+* service 'ten': the waiting duration on the server is: 200 ms.
+* service 'thirteen': the waiting duration on the server is: 3000 ms. This service will fail on the server side. (throw an exception)
+
+The context will end in error. Waiting commands, because of the dependencies to command 'thirteen' will not be started!
+
+#### Test Case 07
+
+Several asynchronous and one synchronous service calls with a InitCommand and a FinishCommand and dependencies.
+
+* service 'one': the waiting duration on the server is: 9250 ms.
+* service 'two': the waiting duration on the server is: 12000 ms. **This is a synchronous command**
+* service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'two'.
+
+The context will successfully end!
+
 
 ## License
 The MIT License (MIT)
