@@ -351,7 +351,7 @@ Use the "Clone or download" button at the top right of this page to get the sour
 ```
 
 ## Example
-SeMa4g provides an example to show some common use cases.
+SeMa4g provides an example web application to show some common use cases.
 
 To run the example use:
 ```
