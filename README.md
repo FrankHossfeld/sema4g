@@ -372,7 +372,7 @@ For all test cases:
 
 * The InitCommand will open a popup.
 * The FinalCommand will close the popup and show a JavaScript alert depending on the server responses. If at least one command ends in error, the context will also ends in error.
-* The createAsyncCommand-method creates a server call. It has two parameters. The first parameter is the name of the command and the second parameter is the duration, the server will wait. This method will loolk different for your calls.
+* The createAsyncCommand-method creates a server call. It has two parameters. The first parameter is the name of the command and the second parameter is the duration, the server will wait. This method will look different for your calls.
 
 #### Test Case 01
 
@@ -383,6 +383,20 @@ A single service call with a InitCommand and a FinishCommand.
 The context will end successfully!
 
 ![Flow Test Case 03](https://github.com/FrankHossfeld/sema4g/blob/master/etc/graphics/TestaCase01.png)
+
+#### Test Case 02
+
+Several service calls with no dependencies and a InitCommand and a FinishCommand.
+
+* service 'one': the waiting duration on the server is: 2500 ms.
+* service 'two': the waiting duration on the server is: 125 ms.
+* service 'three': the waiting duration on the server is: 1250 0ms.
+* service 'four': the waiting duration on the server is: 8750 ms.
+* service 'five': the waiting duration on the server is: 125 ms.
+
+The context will successfully end!
+
+![Flow Test Case 03](https://github.com/FrankHossfeld/sema4g/blob/master/etc/graphics/TestaCase02.png)
 
 
 #### Test Case 03
