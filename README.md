@@ -442,14 +442,14 @@ Several service calls with a InitCommand and a FinishCommand and dependencies. O
 * service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'five' and 'eight'.
 * service 'four': the waiting duration on the server is: 52000 ms. The service depends on the execution of service 'two'.
 * service 'five': the waiting duration on the server is: 250 ms.
-* service 'six': the waiting duration on the server is: 6000 ms. The service depends on the execution of service 'eight', 'nine' and 'thirteen'. **This command will not be executed due to an erroe in command 'thirteen'**.
+* service 'six': the waiting duration on the server is: 6000 ms. The service depends on the execution of service 'eight', 'nine' and 'thirteen'. **This command will not be executed due to an error in command 'thirteen'**.
 * service 'seven': the waiting duration on the server is: 7250 ms.
 * service 'eight': the waiting duration on the server is: 2400 ms.
 * service 'nine': the waiting duration on the server is: 5100 ms.
 * service 'ten': the waiting duration on the server is: 200 ms.
 * service 'thirteen': the waiting duration on the server is: 3000 ms. This service will fail on the server side. (throw an exception)
 
-The context will end in error. Waiting commands, because of the dependencies to command 'thirteen' will not be started!
+The context will end in error. Waiting commands, because of the dependencies to command 'thirteen', will not be started!
 
 #### Test Case 07
 
@@ -459,7 +459,7 @@ Several asynchronous and one synchronous service calls with a InitCommand and a 
 * service 'two': the waiting duration on the server is: 12000 ms. **This is a synchronous command**
 * service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'two'.
 
-The context will successfully end!
+The context will end successfully.
 
 
 ## License
