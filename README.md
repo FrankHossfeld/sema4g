@@ -366,7 +366,41 @@ from the pom inside the sema4g-example directory.
 
 In case the web applicaiton is running, select a test and press the 'Run'-Button.
 
-### Test case 03
+### Test Case Description
+
+For all test cases:
+
+* The InitCommand will open a popup.
+* The FinalCommand will close the popup and show a JavaScript alert depending on the server responses. If at least one command ends in error, the context will also ends in error.
+* The createAsyncCommand-method creates a server call. It has two parameters. The first parameter is the name of the command and the second parameter is the duration, the server will wait. This method will loolk different for your calls.
+
+#### Test Case 01
+
+A single service call with a InitCommand and a FinishCommand.
+
+* service 'one': the waiting duration on the server is: 2500 ms.
+
+The context will end successfully!
+
+![Flow Test Case 03](https://github.com/FrankHossfeld/sema4g/blob/master/etc/graphics/TestaCase01.png)
+
+
+#### Test Case 03
+Several service calls with a InitCommand and a FinishCommand and dependencies.
+
+* service 'one': the waiting duration on the server is: 9250 ms. The service depends on the execution of service 'three' and 'ten'.
+* service 'two': the waiting duration on the server is: 3255 ms.
+* service 'three': the waiting duration on the server is: 125 ms. The service depends on the execution of service 'five'.
+* service 'four': the waiting duration on the server is: 52000 ms. The service depends on the execution of service 'five'.
+* service 'five': the waiting duration on the server is: 250 ms. The service depends on the execution of service 'eight' and 'nine'.
+* service 'six': the waiting duration on the server is: 6000 ms.
+* service 'seven': the waiting duration on the server is: 7250 ms.
+* service 'eight': the waiting duration on the server is: 2400 ms.
+* service 'nine': the waiting duration on the server is: 5100 ms.
+* service 'ten': the waiting duration on the server is: 200 ms.
+
+The context will end successfully.
+
 ![Flow Test Case 03](https://github.com/FrankHossfeld/sema4g/blob/master/etc/graphics/TestaCase03-100.png)
 
 ## License
