@@ -159,7 +159,7 @@ In case that one AsyncCommad ends in error, SeMa4g stops the excecution, waits f
 
 In case that all commands finished without errors the `onSuccess`-method of the FinalCommand is called.
 
-#### Conditional commmands
+#### Conditional commands
 In case the SeMa4g context is started by calling the `run`-method, the `execute`-method of all commands will be called. In some cases it might be necessary that one command needs the response of another command. To handle such things, SeMa4g offers the possibility to add depending commands to a command.
 
 If a command depends on another command (or maybe more than one command), the execution of this command will wait until all depending commands have been successfully finished.
