@@ -188,7 +188,7 @@ sema4gContext.build()
 #### Order of Execution
 Executing the context will:
 * execute all InitCommands
-* execute all commonds
+* execute all commands
 * execute all FinalCommands
 
 That means:
