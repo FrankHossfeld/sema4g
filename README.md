@@ -24,7 +24,7 @@ Configure the GWT project to inherit the SeMa4g module.
 * Insert the SeMa4g module into the project's module descriptor
 ```GWT
   <!-- Other module inherits -->
-  <inherits name="com.google.gwt.debug.Debug"/>
+  <inherits name="de.gishmo.gwt.sema4g.SeMa4g"/>
 ```
 
 
