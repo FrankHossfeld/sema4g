@@ -244,9 +244,9 @@ public class SeMa4gExample
     ScrollPanel spRightTop = new ScrollPanel();
     spRightTop.addStyleName(style.border());
     spRightTop.setSize("498px",
-                       "175px");
+                       "312px");
     rightPanel.addNorth(spRightTop,
-                        188);
+                        325);
     spRightTop.add(fpDescription);
 
     Label rightHeadlineBottom = new Label("Result");
@@ -257,7 +257,7 @@ public class SeMa4gExample
     ScrollPanel spRightBottom = new ScrollPanel();
     spRightBottom.addStyleName(style.border());
     spRightBottom.setSize("498px",
-                          "550px");
+                          "413px");
     rightPanel.add(spRightBottom);
     spRightBottom.add(fpResult);
 

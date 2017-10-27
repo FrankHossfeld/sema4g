@@ -18,6 +18,7 @@ package de.gishmo.gwt.sema4g.example.client.cases;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
@@ -94,16 +95,19 @@ public abstract class AbstractCase {
     return new FinalCommand() {
       @Override
       public void onSuccess() {
+        String executionTimeMessage = executionTimeValue();
         popup.hide();
         fp.add(createLabel(successText));
-        fp.add(executionTime());
+        fp.add(executionTime(executionTimeMessage));
+        Window.alert("Execution ended successfully ...\n\n" + executionTimeMessage);
       }
 
       @Override
       public void onFailure() {
+        String executionTimeMessage = executionTimeValue();
         popup.hide();
         fp.add(createLabel(errorText));
-        fp.add(executionTime());
+        fp.add(executionTime(executionTimeMessage));
       }
     };
   }
@@ -168,8 +172,12 @@ public abstract class AbstractCase {
 //    };
 //  }
 
-  private Label executionTime() {
-    return createLabel("Exection Time: " + Integer.toString(duration.elapsedMillis()) + " ms.");
+  private Label executionTime(String executionTimeMessage) {
+    return createLabel(executionTimeMessage);
+  }
+
+  private String executionTimeValue() {
+    return "Exection Time: " + Integer.toString(duration.elapsedMillis()) + " ms.";
   }
 
   /**
