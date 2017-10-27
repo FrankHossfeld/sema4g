@@ -18,6 +18,7 @@ package de.gishmo.gwt.sema4g.example.client.cases;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
@@ -76,7 +77,10 @@ public abstract class AbstractCase {
    * @return instance of InitCommand
    */
   InitCommand createInitCommand() {
-    return () -> popup.center();
+    return () -> {
+      duration = new Duration();
+      popup.center();
+    };
   }
 
   /**
@@ -94,6 +98,7 @@ public abstract class AbstractCase {
         popup.hide();
         fp.add(createLabel(successText));
         fp.add(executionTime());
+        Window.alert("processing ended sucessfully");
       }
 
       @Override
@@ -101,6 +106,7 @@ public abstract class AbstractCase {
         popup.hide();
         fp.add(createLabel(errorText));
         fp.add(executionTime());
+        Window.alert("PANIC: processing ended in error: " + errorText);
       }
     };
   }
@@ -240,7 +246,7 @@ public abstract class AbstractCase {
   /**
    * Creates an instance of an {@link SyncCommand} command with a Timer, to simulate some actions.
    *
-   * @param name     identifier of the service
+   * @param name identifier of the service
    * @return instance of FinalCommand
    */
   SeMa4gCommand createSyncCommand(final String name) {

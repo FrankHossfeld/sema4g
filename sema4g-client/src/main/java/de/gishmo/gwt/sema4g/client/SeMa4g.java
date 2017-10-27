@@ -40,6 +40,9 @@ public class SeMa4g {
   /* list auf calls to be executed */
   private List<SeMa4gCommand> seMa4gCommands;
 
+  private SeMa4g() {
+  }
+
   private SeMa4g(Builder builder) {
     this.state = State.WAITING;
 

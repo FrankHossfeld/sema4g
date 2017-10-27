@@ -93,7 +93,6 @@ public class SeMa4gExample
     });
 
     runButton.addClickHandler((e) -> {
-      GWT.debugger();
       if (selectedCase != null) {
         clear();
         setUpCase();
