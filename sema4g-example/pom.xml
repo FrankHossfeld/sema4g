@@ -21,14 +21,14 @@
 
   <groupId>de.gishmo.gwt.example</groupId>
   <artifactId>sema4g-example</artifactId>
-  <version>1.5.2</version>
+  <version>1.5.3</version>
   <modelVersion>4.0.0</modelVersion>
 
   <packaging>gwt-app</packaging>
 
   <properties>
     <!-- Convenience property to set the GWT version -->
-    <gwtVersion>2.8.1</gwtVersion>
+    <gwtVersion>2.8.2</gwtVersion>
 
     <!-- GWT needs at least java 1.6 -->
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -76,12 +76,12 @@
     <dependency>
       <groupId>de.gishmo.gwt</groupId>
       <artifactId>sema4g</artifactId>
-      <version>1.5.2</version>
+      <version>1.5.3</version>
     </dependency>
     <dependency>
       <groupId>de.gishmo.gwt</groupId>
       <artifactId>sema4g-rpc</artifactId>
-      <version>1.5.2</version>
+      <version>1.5.3</version>
     </dependency>
     <dependency>
       <groupId>com.squareup</groupId>

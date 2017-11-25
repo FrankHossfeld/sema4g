@@ -154,6 +154,7 @@ public class SeMa4g {
    * Resets all commands of the execution context
    */
   public void reset() {
+    this.state = State.WAITING;
     for (SeMa4gCommand command : this.seMa4gCommands) {
       command.reset();
     }
