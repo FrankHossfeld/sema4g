@@ -16,10 +16,10 @@
 
 package de.gishmo.gwt.sema4g.test;
 
-import de.gishmo.gwt.sema4g.client.SeMa4g;
-import de.gishmo.gwt.sema4g.client.SeMa4gConstants;
-import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
-import de.gishmo.gwt.sema4g.client.exception.SeMa4gException;
+import com.github.mvp4g.sema4g.client.SeMa4g;
+import com.github.mvp4g.sema4g.client.SeMa4gConstants;
+import com.github.mvp4g.sema4g.client.command.SeMa4gCommand;
+import com.github.mvp4g.sema4g.client.exception.SeMa4gException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

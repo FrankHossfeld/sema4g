@@ -33,9 +33,9 @@
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
-  <inherits name="de.gishmo.gwt.sema4g.SeMa4g"/>
+  <inherits name="com.github.mvp4g.sema4g.SeMa4g"/>
   <inherits name="com.google.web.bindery.autobean.AutoBean"/>
-  <inherits name="de.gishmo.gwt.sema4g.rpc.SeMa4gRPC"/>
+  <inherits name="com.github.mvp4g.sema4g.rpc.SeMa4gRPC"/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='de.gishmo.gwt.sema4g.example.client.SeMa4gExample'/>

@@ -5,13 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 
 
-  <groupId>de.gishmo.gwt</groupId>
+  <groupId>com.github.mvp4g</groupId>
   <artifactId>sema4g-parent</artifactId>
-  <version>1.5.3</version>
+  <version>1.6.0</version>
   <packaging>pom</packaging>
   <name>SeMa4g parent</name>
   <description>Managing asynchronous calls in GWT</description>
-  <url>https://github.com/frankhossfeld/sema4g</url>
+  <url>https://github.com/mvp4g/sema4g</url>
 
   <modules>
     <module>sema4g-client</module>
@@ -20,7 +20,7 @@
     <module>sema4g-requestbuilder</module>
   </modules>
 
-  <inceptionYear>2017</inceptionYear>
+  <inceptionYear>2018</inceptionYear>
   
   <licenses>
     <license>
@@ -42,15 +42,15 @@
   </developers>
 
   <scm>
-    <connection>scm:git:https://github.com/FrankHossfeld/sema4g</connection>
-    <developerConnection>scm:git:https://github.com/FrankHossfeld/sema4g</developerConnection>
-    <url>scm:git:https://github.com/FrankHossfeld/sema4g</url>
+    <connection>scm:git:https://github.com/mvp4g/sema4g</connection>
+    <developerConnection>scm:git:https://github.com/mvp4g/sema4g</developerConnection>
+    <url>scm:git:https://github.com/mvp4g/sema4g</url>
     <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/FrankHossfeld/sema4g/issues</url>
+    <url>https://github.com/mvp4g/sema4g/issues</url>
   </issueManagement>
 
   <prerequisites>

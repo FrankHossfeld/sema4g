@@ -15,6 +15,11 @@
  */
 package de.gishmo.gwt.sema4g.example.client.cases;
 
+import com.github.mvp4g.sema4g.client.command.AsyncCommand;
+import com.github.mvp4g.sema4g.client.command.FinalCommand;
+import com.github.mvp4g.sema4g.client.command.InitCommand;
+import com.github.mvp4g.sema4g.client.command.SeMa4gCommand;
+import com.github.mvp4g.sema4g.client.command.SyncCommand;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
@@ -22,10 +27,9 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
-import de.gishmo.gwt.sema4g.client.command.*;
 import de.gishmo.gwt.sema4g.example.client.service.RpcFailingServiceAsync;
 import de.gishmo.gwt.sema4g.example.client.service.RpcServiceAsync;
-import de.gishmo.gwt.sema4g.rpc.client.command.proxy.AsyncCallbackProxy;
+import com.github.mvp4g.sema4g.rpc.client.command.proxy.AsyncCallbackProxy;
 
 public abstract class AbstractCase {
 //

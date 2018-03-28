@@ -21,9 +21,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
+    <groupId>com.github.mvp4g</groupId>
     <artifactId>sema4g-parent</artifactId>
-    <groupId>de.gishmo.gwt</groupId>
-    <version>1.5.3</version>
+    <version>1.6.0</version>
   </parent>
 
   <artifactId>sema4g</artifactId>

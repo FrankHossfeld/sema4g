@@ -21,7 +21,7 @@
 
   <groupId>de.gishmo.gwt.example</groupId>
   <artifactId>sema4g-example</artifactId>
-  <version>1.5.3</version>
+  <version>1.6.0</version>
   <modelVersion>4.0.0</modelVersion>
 
   <packaging>gwt-app</packaging>
@@ -74,19 +74,19 @@
       <artifactId>gwt-servlet</artifactId>
     </dependency>
     <dependency>
-      <groupId>de.gishmo.gwt</groupId>
+      <groupId>com.github.mvp4g</groupId>
       <artifactId>sema4g</artifactId>
-      <version>1.5.3</version>
+      <version>1.6.0</version>
     </dependency>
     <dependency>
-      <groupId>de.gishmo.gwt</groupId>
+      <groupId>com.github.mvp4g</groupId>
       <artifactId>sema4g-rpc</artifactId>
-      <version>1.5.3</version>
+      <version>1.6.0</version>
     </dependency>
     <dependency>
       <groupId>com.squareup</groupId>
       <artifactId>javapoet</artifactId>
-      <version>1.9.0</version>
+      <version>1.10.0</version>
     </dependency>
   </dependencies>
 

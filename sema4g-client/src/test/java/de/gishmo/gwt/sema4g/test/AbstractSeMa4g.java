@@ -16,10 +16,10 @@
 
 package de.gishmo.gwt.sema4g.test;
 
-import de.gishmo.gwt.sema4g.client.command.FinalCommand;
-import de.gishmo.gwt.sema4g.client.command.InitCommand;
-import de.gishmo.gwt.sema4g.client.command.SeMa4gCommand;
-import de.gishmo.gwt.sema4g.client.command.SyncCommand;
+import com.github.mvp4g.sema4g.client.command.FinalCommand;
+import com.github.mvp4g.sema4g.client.command.InitCommand;
+import com.github.mvp4g.sema4g.client.command.SeMa4gCommand;
+import com.github.mvp4g.sema4g.client.command.SyncCommand;
 
 abstract class AbstractSeMa4g {
   InitCommand createInitCommand() {
