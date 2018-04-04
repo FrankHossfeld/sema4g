@@ -22,7 +22,7 @@ import org.fusesource.restygwt.client.TextCallback;
 
 /**
  * <p>Add support for RestyGWT {@link TextCallback}</p>
- * <br /><br />
+ * <br><br>
  * <p>If you are using SeMa4g, you have to this TextCallbackProxy
  * class instead of the TextCallback from the RestyGWT. Otherwise
  * SeMa4g will not work.</p>
