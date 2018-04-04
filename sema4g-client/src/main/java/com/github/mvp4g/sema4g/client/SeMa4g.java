@@ -270,7 +270,11 @@ public class SeMa4g {
     List<SeMa4gCommand> seMa4gCommands  = new ArrayList<>();
 
     /**
-     * Adds the command to the list of commands, which will be executed, when the context runs. <br></br> if the command is already added to the list of commands, the command will be ignored.
+     * Adds the command to the list of commands, which will be executed,
+     * when the context runs.
+     * <br><br>
+     * if the command is already added
+     * to the list of commands, the command will be ignored.
      *
      * @param command command that should be added to the list of executable commands
      * @return executionContext
@@ -294,7 +298,10 @@ public class SeMa4g {
     }
 
     /**
-     * Adds a list of commands to the list of already added commands, which will be executed, when the context runs. <br></br> if the command is already added to the list of commands, the command will be ignored.
+     * Adds a list of commands to the list of already added commands, which will be
+     * executed, when the context runs.
+     * <br><br>
+     * if the command is already added to the list of commands, the command will be ignored.
      *
      * @param commands list of command that should be added to the list of executable commands
      * @return executionContext
