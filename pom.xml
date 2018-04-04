@@ -10,7 +10,7 @@
   <version>1.6.0</version>
   <packaging>pom</packaging>
 
-  <name>SeMa4g parent</name>
+  <name>SeMa4g parent - parent pom for sema4g</name>
   <description>Managing asynchronous calls in GWT</description>
   <url>https://github.com/mvp4g/sema4g</url>
 
