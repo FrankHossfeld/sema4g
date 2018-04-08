@@ -21,7 +21,7 @@ import com.github.mvp4g.sema4g.client.command.proxy.SeMa4gProxy;
 
 /**
  * <p>Add support for AsyncCallback in GWT {@link AsyncCallback}</p>
- * <br /><br />
+ * <br><br>
  * <p>If you are using SeMa4g, you have to this AsyncCallbackProxy
  * class instead of the AsyncCallback. Otherwise SeMa4g will not work.</p>
  */

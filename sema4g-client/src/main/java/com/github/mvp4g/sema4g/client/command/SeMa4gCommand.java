@@ -98,7 +98,7 @@ public interface SeMa4gCommand {
   /**
    * starts a cycle dependency check
    *
-   * @throws SeMa4gException
+   * @throws SeMa4gException in case there is a cycle dependency
    */
   void startCheckCycleDependencies()
     throws SeMa4gException;

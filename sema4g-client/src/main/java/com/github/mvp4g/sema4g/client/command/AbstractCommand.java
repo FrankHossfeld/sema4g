@@ -174,7 +174,7 @@ public abstract class AbstractCommand
   /**
    * starts a cycle dependency check
    *
-   * @throws SeMa4gException
+   * @throws SeMa4gException in case there is a cycle dependency
    */
   public void startCheckCycleDependencies()
     throws SeMa4gException {

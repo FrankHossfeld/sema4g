@@ -24,7 +24,7 @@ import com.github.mvp4g.sema4g.client.command.proxy.SeMa4gProxy;
 
 /**
  * <p>Add support for RequestCallback in GWT {@link RequestCallback}</p>
- * <br /><br />
+ * <br><br>
  * <p>If you are using SeMa4g, you have to this RequestCallbackProxy
  * class instead of the RequestCallback. Otherwise SeMa4g will not work.</p>
  */

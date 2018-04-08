@@ -22,7 +22,7 @@ import org.fusesource.restygwt.client.MethodCallback;
 
 /**
  * <p>Add support for RestyGWT {@link MethodCallback}</p>
- * <br /><br />
+ * <br><br>
  * <p>If you are using SeMa4g, you have to this MethodCallbackProxy
  * class instead of the MethodCallback from the RestyGWT. Otherwise
  * SeMa4g will not work.</p>
