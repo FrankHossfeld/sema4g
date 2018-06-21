@@ -15,13 +15,13 @@
  */
 package com.github.mvp4g.sema4g.client.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.github.mvp4g.sema4g.client.SeMa4g;
 import com.github.mvp4g.sema4g.client.SeMa4gConstants;
 import com.github.mvp4g.sema4g.client.SeMa4gUtils;
 import com.github.mvp4g.sema4g.client.exception.SeMa4gException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>AbstractCommand provides base functionality to run a SeMa4g command.</p>
@@ -56,8 +56,18 @@ public abstract class AbstractCommand
    * start the next one.
    */
   public void signalFinish() {
+    this.signalFinish(false);
+  }
+
+  /**
+   * This command can be called to finish an execution and
+   * start the next one depending on the parameter finishSema4gContext .
+   *
+   * @param finishSema4gContext true: context will be finished, false: only the task will be finished
+   */
+  public void signalFinish(boolean finishSema4gContext) {
     this.state = State.FINISH;
-    executionContext.signalFinish();
+    executionContext.signalFinish(finishSema4gContext);
   }
 
   /**

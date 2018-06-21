@@ -23,7 +23,7 @@
 
   <groupId>com.github.mvp4g</groupId>
   <artifactId>sema4g-parent</artifactId>
-  <version>1.6.0</version>
+  <version>1.6.1</version>
   <packaging>pom</packaging>
 
   <name>SeMa4g parent - parent pom for sema4g</name>

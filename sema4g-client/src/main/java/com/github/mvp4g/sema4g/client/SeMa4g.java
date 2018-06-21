@@ -70,7 +70,11 @@ public class SeMa4g {
   }
 
   /**
-   * <p>Use this method to invoke all commands</p> <p>Make sure, that this method is called only once.</p>
+   * Use this method to invoke all commands
+   *
+   * Make sure, that this method is called only once.
+   *
+   * @throws SeMa4gException in case some thing went wrong (validation error, etc.)
    */
   public void run()
     throws SeMa4gException {
@@ -144,8 +148,20 @@ public class SeMa4g {
    * start the next one.
    */
   public void signalFinish() {
+   this.signalFinish(true);
+  }
+
+  /**
+   * This command can be called to finish an execution and
+   * start the next one.
+   *
+   * @param finishSema4gContext true: finish Sema4gContext, false: finish command
+   */
+  public void signalFinish(boolean finishSema4gContext) {
     // set state
-    this.state = State.FINISH;
+    if (finishSema4gContext) {
+      this.state = State.FINISH;
+    }
     // trigger another command
     executeRun();
   }
