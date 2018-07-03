@@ -160,8 +160,13 @@ public class SeMa4g {
   public void signalFinish(boolean finishSema4gContext) {
     // set state
     if (finishSema4gContext) {
+      // in case we have to set the context to finish ...
       this.state = State.FINISH;
     }
+    // update the state of the context.
+    // this is necessary to ensure that, when the last command is set to finish
+    // the state of context will be updated!
+    this.updateState();
     // trigger another command
     executeRun();
   }
@@ -249,6 +254,17 @@ public class SeMa4g {
     return true;
   }
 
+  /**
+   * this method updates the state of the sema4g context
+   *
+   * <ul>
+   *   <li>if the state of the context is ERROR ==> nothing to do</li>
+   *   <li>if one of the commands has state ERROR ==> set the state of the context to ERROR</li>
+   *   <li>if one of the commands has state WAITING or RUNNING ==> set the state of the context to RUNNING</li>
+   * </ul>
+   *
+   * in all other cases we set the state of the context to FINISH
+   */
   private void updateState() {
     if (SeMa4gCommand.State.ERROR.equals(this.state)) {
       return;
